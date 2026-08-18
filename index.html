@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Open Tools, Open Sky — LSST Science with Public Rubin Data · Medellín 2026</title>
+  <meta name="description" content="A 3-day LATAM Hack Days workshop at Universidad de Antioquia, Medellín, doing LSST science with public Rubin data products and LINCC Frameworks tools. October 2026.">
+
+  <style>
+    :root {
+      /* Rubin-inspired palette, drawn from the Rubin alert-stream artwork */
+      --rubin-cyan:  #3fc6d8;
+      --rubin-teal:  #1f9fb5;
+      --navy:        #0a2831;
+      --navy-2:      #0f3d49;
+      --accent:      #0d7f90;
+      --accent-dark: #0a5560;
+      --ink:         #16242a;
+      --muted:       #55686f;
+      --faint:       #33474e;
+      --rule:        #e2e9eb;
+      --bg:          #f6f8f9;
+      --card:        #ffffff;
+      --wrap:        980px;
+    }
+
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 24px; }
+
+    a { color: var(--accent); }
+    a:hover { color: var(--accent-dark); }
+
+    /* ---- Top navigation ---- */
+    .topbar {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: saturate(180%) blur(8px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .topbar .wrap {
+      display: flex; flex-wrap: wrap; align-items: center;
+      justify-content: space-between; gap: 8px 20px;
+      padding: 12px 24px;
+    }
+    .brandmark { font-weight: 700; font-size: 0.95rem; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; }
+    .brandmark span { color: var(--rubin-teal); }
+    .navlinks { display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: 0.9rem; }
+    .navlinks a { text-decoration: none; color: var(--muted); }
+    .navlinks a:hover { color: var(--rubin-teal); }
+
+    /* ---- Hero ---- */
+    .hero {
+      position: relative;
+      color: #fff;
+      background:
+        linear-gradient(180deg, rgba(6,26,33,0.55) 0%, rgba(6,26,33,0.80) 70%, rgba(6,26,33,0.94) 100%),
+        #061a21 url("figures_website/noirlab2605a.jpg") center 30% / cover no-repeat;
+      border-bottom: 4px solid var(--rubin-cyan);
+    }
+    .hero .wrap { padding: 96px 24px 84px; }
+    .hero .eyebrow {
+      margin: 0 0 14px; font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--rubin-cyan);
+    }
+    .hero h1 {
+      margin: 0 0 6px; font-size: 3rem; line-height: 1.05;
+      letter-spacing: -0.02em; font-weight: 800; max-width: 15em;
+    }
+    .hero h1 em { color: var(--rubin-cyan); font-style: normal; }
+    .hero .subtitle {
+      margin: 0 0 22px; font-size: 1.2rem; font-weight: 400;
+      color: #dfeef1; max-width: 32em;
+    }
+    .hero .meta {
+      display: flex; flex-wrap: wrap; gap: 10px 14px;
+      margin: 0 0 26px; font-size: 0.98rem;
+    }
+    .hero .meta .pill {
+      background: rgba(63,198,216,0.15);
+      border: 1px solid rgba(63,198,216,0.45);
+      color: #eafbfe; border-radius: 999px; padding: 5px 15px; font-weight: 500;
+    }
+    .hero .actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    .hero .credit {
+      position: absolute; right: 12px; bottom: 8px;
+      font-size: 0.68rem; color: rgba(255,255,255,0.6);
+    }
+
+    .btn {
+      display: inline-block; background: var(--rubin-teal); color: #fff;
+      text-decoration: none; font-size: 1rem; font-weight: 600;
+      padding: 12px 26px; border-radius: 6px; border: 1px solid var(--rubin-teal);
+    }
+    .btn:hover { background: var(--rubin-cyan); border-color: var(--rubin-cyan); color: #062a31; }
+    .btn.ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,0.6); }
+    .btn.ghost:hover { background: rgba(255,255,255,0.12); color: #fff; border-color: #fff; }
+    .btn:focus-visible { outline: 3px solid #a9e6ef; outline-offset: 2px; }
+
+    /* ---- Sections ---- */
+    section { padding: 60px 0; border-bottom: 1px solid var(--rule); }
+    section h2 {
+      margin: 0 0 8px; font-size: 1.55rem; font-weight: 800; letter-spacing: -0.015em;
+    }
+    section h2::after {
+      content: ""; display: block; width: 46px; height: 3px;
+      background: var(--rubin-cyan); border-radius: 2px; margin-top: 10px;
+    }
+    section .lead { margin: 18px 0 28px; color: var(--muted); max-width: 46em; }
+    section p { margin: 0 0 18px; }
+    section p:last-child { margin-bottom: 0; }
+
+    .note { margin: 16px 0 0; font-size: 0.9rem; color: var(--faint); }
+
+    /* ---- Goals cards ---- */
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .card {
+      background: var(--card); border: 1px solid var(--rule);
+      border-top: 3px solid var(--rubin-teal);
+      border-radius: 8px; padding: 22px 22px 24px;
+    }
+    .card .num {
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em;
+      color: var(--rubin-teal); text-transform: uppercase;
+    }
+    .card h3 { margin: 8px 0 8px; font-size: 1.05rem; font-weight: 700; line-height: 1.3; }
+    .card p { margin: 0; font-size: 0.95rem; color: var(--muted); }
+
+    /* ---- Tracks ---- */
+    .tracks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .track {
+      background: var(--card); border: 1px solid var(--rule); border-radius: 8px;
+      padding: 22px; position: relative; overflow: hidden;
+    }
+    .track .tag {
+      display: inline-block; background: var(--navy); color: var(--rubin-cyan);
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em;
+      padding: 4px 10px; border-radius: 4px; margin-bottom: 12px;
+    }
+    .track h3 { margin: 0 0 8px; font-size: 1.08rem; font-weight: 700; }
+    .track p { margin: 0; font-size: 0.95rem; color: var(--muted); }
+
+    /* ---- Mentors / projects ---- */
+    .mentors { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .mentor {
+      background: var(--card); border: 1px solid var(--rule);
+      border-left: 4px solid var(--rubin-cyan); border-radius: 6px; padding: 18px 20px;
+    }
+    .mentor .name { font-weight: 700; font-size: 1.02rem; margin: 0 0 4px; }
+    .mentor .name .role {
+      display: inline-block; margin-left: 8px; font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase; color: var(--rubin-teal);
+      vertical-align: middle;
+    }
+    .mentor ul { margin: 8px 0 0; padding-left: 1.15em; }
+    .mentor li { margin: 0 0 6px; font-size: 0.95rem; color: var(--faint); }
+    .mentor li:last-child { margin-bottom: 0; }
+
+    /* ---- Tools list ---- */
+    .tools { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0 34px; }
+    .tools li { padding: 12px 0; border-top: 1px solid var(--rule); font-size: 0.96rem; }
+    .tools li b { color: var(--ink); }
+    .tools li .what { color: var(--faint); }
+
+    /* ---- Agenda ---- */
+    .agenda-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 34px; }
+    .day h3 { margin: 0 0 2px; font-size: 1.05rem; font-weight: 700; }
+    .day .date {
+      margin: 0 0 14px; font-size: 0.8rem; color: var(--rubin-teal);
+      text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600;
+    }
+    .slot {
+      display: grid; grid-template-columns: 58px 1fr; gap: 10px;
+      padding: 7px 0; border-top: 1px solid var(--rule); font-size: 0.92rem;
+    }
+    .slot:first-of-type { border-top: none; }
+    .slot .time { color: var(--accent); font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .slot.brk .desc { color: var(--faint); }
+    .slot.hi .desc { font-weight: 600; }
+
+    /* ---- Local info ---- */
+    .local-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 34px; align-items: center; }
+    .local-grid img { width: 100%; height: auto; border-radius: 8px; box-shadow: 0 6px 18px rgba(0,0,0,0.10); display: block; }
+    .local-grid .cap { font-size: 0.78rem; color: var(--faint); margin-top: 8px; }
+
+    /* ---- Participants ---- */
+    .tbd {
+      background: linear-gradient(0deg, #eef6f7, #f7fbfb);
+      border: 1px dashed var(--rubin-teal); border-radius: 8px;
+      padding: 26px; text-align: center; color: var(--faint);
+    }
+    .tbd strong { color: var(--ink); }
+
+    /* ---- People (organizers) ---- */
+    .people { columns: 2; column-gap: 34px; margin: 0; padding: 0; list-style: none; }
+    .people li { padding: 6px 0; border-top: 1px solid var(--rule); font-size: 0.93rem; break-inside: avoid; }
+    .people li .aff { color: var(--faint); font-size: 0.85rem; }
+
+    /* ---- Code of conduct ---- */
+    blockquote {
+      margin: 18px 0 0; padding: 4px 20px; border-left: 4px solid var(--rubin-cyan);
+      color: var(--faint); font-size: 0.95rem;
+    }
+    blockquote li { margin-bottom: 8px; }
+
+    /* ---- Footer ---- */
+    footer { background: var(--navy); color: #cfe0e4; padding: 48px 0 56px; font-size: 0.92rem; }
+    footer a { color: var(--rubin-cyan); }
+    footer a:hover { color: #fff; }
+    footer .logos {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 24px 30px;
+      background: #fff; border-radius: 10px; padding: 22px 28px; margin: 0 0 30px;
+    }
+    footer .logos img { height: 42px; width: auto; }
+    footer .logos img.tall { height: 58px; }
+    footer .logos img.wordmark { height: 28px; }
+    footer .org-label {
+      color: var(--rubin-cyan); text-transform: uppercase; letter-spacing: 0.08em;
+      font-size: 0.74rem; font-weight: 700; margin: 22px 0 6px;
+    }
+    footer p { margin: 0 0 8px; }
+    footer .ack { color: #fff; font-weight: 500; margin-top: 18px; }
+
+    @media (max-width: 820px) {
+      .cards, .tracks, .agenda-grid { grid-template-columns: 1fr; }
+      .mentors, .tools, .local-grid { grid-template-columns: 1fr; }
+      .people { columns: 1; }
+      .hero h1 { font-size: 2.2rem; }
+      .hero .wrap { padding: 68px 24px 60px; }
+      .navlinks { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brandmark" href="#top">Open Tools, <span>Open Sky</span></a>
+      <nav class="navlinks">
+        <a href="#about">About</a>
+        <a href="#tracks">Tracks</a>
+        <a href="#agenda">Agenda</a>
+        <a href="#mentors">Mentors</a>
+        <a href="#tools">Data &amp; Tools</a>
+        <a href="#local-info">Local Info</a>
+        <a href="#participants">Participants</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ===== HERO ===== -->
+    <div class="hero">
+      <div class="wrap">
+        <p class="eyebrow">A LATAM Hack Days Workshop</p>
+        <h1><em>Open Tools, Open Sky:</em> Doing LSST Science with Public Rubin Data &amp; LINCC Frameworks</h1>
+        <p class="subtitle">Three days turning open access to Rubin's alert stream into working, broker-served science — in teams, paired with Rubin mentors.</p>
+        <div class="meta">
+          <span class="pill">📍 Universidad de Antioquia · Medellín, Colombia</span>
+          <span class="pill">🗓️ October 2026 · 3 days, in person</span>
+          <span class="pill">👥 ~25 participants + 5 mentors</span>
+        </div>
+        <div class="actions">
+          <a class="btn" href="#about">About the event</a>
+          <a class="btn ghost" href="#mentors">Mentors &amp; projects</a>
+        </div>
+      </div>
+      <span class="credit">Illustration: NSF–DOE Vera C. Rubin Observatory</span>
+    </div>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about">
+      <div class="wrap">
+        <h2>About</h2>
+        <p class="lead">Rubin Observatory's alert stream is the largest public astronomical data product ever released. Every alert packet, and every broker classification, is available to every astronomer — regardless of data-rights status. Yet without structured onboarding and the right tool guidance, that access remains opaque for many Latin American researchers.</p>
+        <p>Over three days in Medellín, ~25 students, early-career researchers, and senior LATAM scientists — working in teams paired with five Rubin mentors — will build functioning science pipelines on broker-served Rubin alerts using LINCC Frameworks tools. The event follows the sprint-driven model of the <a href="https://rubinalerts26.github.io/">Rubin Alerts &amp; AI Hackathon</a>: short context talks, pre-formed teams, daily stand-ups, and hack sprints punctuated by rapid team updates and a final show-and-tell.</p>
+
+        <div class="cards" style="margin-top:28px;">
+          <div class="card">
+            <div class="num">Goal 01</div>
+            <h3>Onboard a new LATAM cohort</h3>
+            <p>Bring researchers to Rubin's public products (alert packets, brokers) and to LINCC Frameworks — LSDB/HATS, Hyrax, LightCurveLynx — with particular attention to those without individual LSST data rights.</p>
+          </div>
+          <div class="card">
+            <div class="num">Goal 02</div>
+            <h3>Pair every team with a mentor</h3>
+            <p>Each team is paired with a Rubin mentor committed to structured post-event follow-up — ensuring continuity into peer-reviewed publications and long-term collaborations.</p>
+          </div>
+          <div class="card">
+            <div class="num">Goal 03</div>
+            <h3>Produce a reusable toolkit</h3>
+            <p>A "Doing LSST Science without Data Rights" playbook and a public GitHub repository, proposed to the Rubin Community Science Team as documentation for the wider community.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TRACKS ===== -->
+    <section id="tracks">
+      <div class="wrap">
+        <h2>Science Tracks</h2>
+        <p class="lead">Teams of 4–5 are assembled in advance around a mentor-proposed science topic. Every team uses at least one LINCC Frameworks tool and at least one community broker.</p>
+        <div class="tracks">
+          <div class="track">
+            <span class="tag">Track A</span>
+            <h3>Transient classification</h3>
+            <p>Detect, filter, and classify alert-stream transients — supernovae, GRBs, kilonovae, TDEs, and anomalous events.</p>
+          </div>
+          <div class="track">
+            <span class="tag">Track B</span>
+            <h3>Variable-star population science</h3>
+            <p>Period-finding and population studies on broker-served variables; crossmatch with Gaia, ZTF, and ATLAS archives.</p>
+          </div>
+          <div class="track">
+            <span class="tag">Track C</span>
+            <h3>Selection-bias quantification</h3>
+            <p>Forward-model expected transient populations against the DP2 visits table and compare to broker-served samples.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MENTORS & PROJECTS ===== -->
+    <section id="mentors">
+      <div class="wrap">
+        <h2>Mentors &amp; Projects</h2>
+        <p class="lead">Five Rubin mentors lead pre-formed teams around the projects below. Each team pairs a mentor-proposed science question with hands-on Rubin alert data and LINCC Frameworks tools.</p>
+        <div class="mentors">
+          <div class="mentor">
+            <p class="name">Yijung Kang <span class="role">Mentor</span></p>
+            <ul>
+              <li>Matching host galaxies of SNe Ia using LSST alerts and archival catalog data.</li>
+            </ul>
+          </div>
+          <div class="mentor">
+            <p class="name">Bolivia Cuevas <span class="role">Mentor</span></p>
+            <ul>
+              <li>Mapping the Nearby Universe: distance determination with variable stars in the Rubin alert stream.</li>
+              <li>Discovering the Unexpected: anomaly detection in Rubin alert streams.</li>
+            </ul>
+          </div>
+          <div class="mentor">
+            <p class="name">Alejandra Arancibia <span class="role">Mentor</span></p>
+            <ul>
+              <li>Characterizing transients, AGN and variable stars in Rubin alerts using the ALeRCE broker.</li>
+            </ul>
+          </div>
+          <div class="mentor">
+            <p class="name">Pedro Bernardinelli <span class="role">Mentor</span></p>
+            <ul>
+              <li>Exploring Rubin Solar System discoveries in the Minor Planet Center.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DATA & TOOLS ===== -->
+    <section id="tools">
+      <div class="wrap">
+        <h2>Rubin Data &amp; LINCC Tools</h2>
+        <p class="lead">The workshop is hands-on. A short set of plenary talks on Day 1 sets the context — the Rubin ecosystem, a broker crash course, and an Alert Production orientation — and everything else is building. Public datasets beyond Rubin (e.g. Gaia, Roman) broaden the science reach without requiring proprietary access; the LSDB/HATS formats are designed for efficient cross-matching.</p>
+        <ul class="tools">
+          <li><b>LSDB / HATS</b> <span class="what">— scalable catalog cross-matching in the HATS format.</span></li>
+          <li><b>Hyrax</b> <span class="what">— machine-learning and anomaly-detection workflows on alerts.</span></li>
+          <li><b>LightCurveLynx</b> <span class="what">— light-curve modeling and analysis.</span></li>
+          <li><b>Community brokers</b> <span class="what">— e.g. ALeRCE; no data rights required to join.</span></li>
+          <li><b>Rubin alert packets</b> <span class="what">— the public alert stream, open to every astronomer.</span></li>
+          <li><b>Companion surveys</b> <span class="what">— Gaia, ZTF, ATLAS, Roman for cross-matching.</span></li>
+        </ul>
+        <p class="note">Pre-event (T–2 weeks): a ~2-hour self-paced tutorial covering LSDB/HATS, Hyrax and LightCurveLynx, plus a short kickoff Zoom with each team's mentor to set the science question and divide initial tasks.</p>
+      </div>
+    </section>
+
+    <!-- ===== AGENDA ===== -->
+    <section id="agenda">
+      <div class="wrap">
+        <h2>Draft Agenda</h2>
+        <p class="lead">Three full days in Medellín — context and sprints on Day 1, deep sprints and Science Collaboration pathways on Day 2, and a publication-pathway workshop with show-and-tell on Day 3.</p>
+        <div class="agenda-grid">
+
+          <div class="day">
+            <h3>Day 1</h3>
+            <p class="date">Context + Sprint 1</p>
+            <div class="slot"><span class="time">08:45</span><span class="desc">Registration + coffee</span></div>
+            <div class="slot"><span class="time">09:00</span><span class="desc">Opening, introductions, code of conduct</span></div>
+            <div class="slot hi"><span class="time">09:20</span><span class="desc">Rubin public data + alerts overview</span></div>
+            <div class="slot brk"><span class="time">10:15</span><span class="desc">Coffee break</span></div>
+            <div class="slot"><span class="time">10:45</span><span class="desc">Broker crash course</span></div>
+            <div class="slot"><span class="time">11:30</span><span class="desc">LINCC Frameworks rotations</span></div>
+            <div class="slot brk"><span class="time">13:00</span><span class="desc">Working lunch</span></div>
+            <div class="slot hi"><span class="time">14:00</span><span class="desc">Sprint 1</span></div>
+            <div class="slot"><span class="time">17:00</span><span class="desc">Team updates + retrospective</span></div>
+            <div class="slot"><span class="time">18:00</span><span class="desc">Welcome reception</span></div>
+          </div>
+
+          <div class="day">
+            <h3>Day 2</h3>
+            <p class="date">Sprints + SC Pathways</p>
+            <div class="slot"><span class="time">09:00</span><span class="desc">Team stand-up</span></div>
+            <div class="slot hi"><span class="time">09:30</span><span class="desc">Sprint 2</span></div>
+            <div class="slot brk"><span class="time">12:30</span><span class="desc">Working lunch</span></div>
+            <div class="slot"><span class="time">13:30</span><span class="desc">Rubin SC pathways panel</span></div>
+            <div class="slot hi"><span class="time">14:30</span><span class="desc">Sprint 3</span></div>
+            <div class="slot brk"><span class="time">15:45</span><span class="desc">Coffee break</span></div>
+            <div class="slot"><span class="time">16:15</span><span class="desc">Sprint 3 continues</span></div>
+            <div class="slot"><span class="time">17:30</span><span class="desc">Team updates</span></div>
+            <div class="slot"><span class="time">19:30</span><span class="desc">Group dinner</span></div>
+          </div>
+
+          <div class="day">
+            <h3>Day 3</h3>
+            <p class="date">Sprint + Show-and-Tell</p>
+            <div class="slot"><span class="time">09:00</span><span class="desc">Team stand-up</span></div>
+            <div class="slot hi"><span class="time">09:30</span><span class="desc">Sprint 4</span></div>
+            <div class="slot brk"><span class="time">12:30</span><span class="desc">Working lunch</span></div>
+            <div class="slot"><span class="time">13:30</span><span class="desc">Publication pathway workshop</span></div>
+            <div class="slot"><span class="time">14:30</span><span class="desc">Sprint 4 continues</span></div>
+            <div class="slot brk"><span class="time">15:30</span><span class="desc">Coffee break</span></div>
+            <div class="slot hi"><span class="time">16:00</span><span class="desc">Show-and-tell</span></div>
+            <div class="slot"><span class="time">17:15</span><span class="desc">Commitments + closing survey</span></div>
+            <div class="slot"><span class="time">17:45</span><span class="desc">Wrap</span></div>
+          </div>
+
+        </div>
+        <p class="note">Draft schedule — subject to change. The event is scheduled after the early DP2 release window (RTN-011).</p>
+      </div>
+    </section>
+
+    <!-- ===== LOCAL INFO ===== -->
+    <section id="local-info">
+      <div class="wrap">
+        <h2>Local Information</h2>
+        <div class="local-grid">
+          <div>
+            <p>The workshop is hosted by <strong>Universidad de Antioquia</strong> in <strong>Medellín, Colombia</strong> — the "City of Eternal Spring," set in a green Andean valley with a mild climate year-round and an easy international gateway via José María Córdova International Airport (MDE).</p>
+            <p>The event is fully in-person. Participants should bring a laptop; a UdeA computer room with desktops will be reserved as a backup for applicants without portable hardware.</p>
+            <p class="note">Detailed venue, travel, and lodging information will be posted here as the dates are confirmed.</p>
+          </div>
+          <div>
+            <img src="figures_website/medellin.jpg" alt="Panoramic view of Medellín, Colombia, in its Andean valley">
+            <p class="cap">Medellín, Colombia — host city for the workshop.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PARTICIPANTS ===== -->
+    <section id="participants">
+      <div class="wrap">
+        <h2>Participants</h2>
+        <div class="tbd">
+          <p><strong>The participant cohort is still being defined.</strong></p>
+          <p style="margin:0;">~25 participants will be selected through the LSST-DA registration form, with a career-stage mix of ~70% early-career and ~30% senior researchers. Selection favors applicants without data rights, those from institutions with limited prior Rubin engagement, and those whose mentor-team pairing is most likely to yield a publication. The list will be published here once confirmed.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ORGANIZERS ===== -->
+    <section id="organizers">
+      <div class="wrap">
+        <h2>Organizers</h2>
+        <p class="lead"><strong>Principal Investigator:</strong> Andrés A. Plazas Malagón (SLAC National Accelerator Laboratory / KIPAC / Stanford University / Rubin).</p>
+        <p style="font-weight:600; margin-bottom:10px;">Co-Investigators</p>
+        <ul class="people">
+          <li>Kristen Dage <span class="aff">· Curtin University</span></li>
+          <li>Camilo Delgado-Correal <span class="aff">· U. Distrital Francisco José de Caldas</span></li>
+          <li>Luz Ángela García <span class="aff">· Universidad ECCI</span></li>
+          <li>Alma González <span class="aff">· Universidad de Guanajuato</span></li>
+          <li>Juan Carlos Muñoz-Cuartas <span class="aff">· Universidad de Antioquia</span></li>
+          <li>Yasna Ordenes Briceño <span class="aff">· Universidad Diego Portales</span></li>
+          <li>Karla Peña <span class="aff">· Rubin Observatory</span></li>
+          <li>Luis Salazar Manzano <span class="aff">· University of Michigan</span></li>
+          <li>Mariano Domínguez <span class="aff">· UN de Córdoba &amp; U. de La Serena</span></li>
+          <li>Tatiana Acero-Cuellar <span class="aff">· University of Delaware</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== CODE OF CONDUCT ===== -->
+    <section id="code-of-conduct">
+      <div class="wrap">
+        <h2>Code of Conduct</h2>
+        <p>All participants are expected to follow the <a href="https://lsstdiscoveryalliance.org/lsst-discovery-alliance-programs/lincc-frameworks/lincc-frameworks-code-conduct/">LINCC Frameworks Code of Conduct</a> and the LSST-DA Code of Conduct throughout all workshop activities, online and offline.</p>
+        <blockquote>
+          <ul>
+            <li><strong>We pledge to treat all people with respect</strong> and provide a harassment- and bullying-free environment, regardless of personal attributes.</li>
+            <li><strong>We pledge to respect the work of others</strong> by recognizing acknowledgment and citation requests of original authors.</li>
+            <li><strong>We pledge to welcome questions and answer them respectfully</strong>, paying particular attention to those new to the community.</li>
+            <li><strong>We pledge to be conscientious of the perceptions of the wider community</strong> and to respond to criticism respectfully.</li>
+            <li><strong>We pledge to help the entire community follow the code of conduct</strong> and not remain silent when we see violations.</li>
+          </ul>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact">
+      <div class="wrap">
+        <h2>Contact</h2>
+        <p>For questions about the workshop, please contact the point of contact:</p>
+        <p><strong>Andrés Plazas Malagón</strong> — <a href="mailto:plazas@stanford.edu">plazas@stanford.edu</a><br>
+        <span style="color:var(--faint); font-size:0.92rem;">SLAC National Accelerator Laboratory / KIPAC / Stanford University / Rubin Observatory</span></p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="wrap">
+      <div class="logos">
+        <img class="tall" src="logos/udea.svg" alt="Universidad de Antioquia">
+        <img src="logos/lincc.png" alt="LINCC Frameworks">
+        <img src="logos/lsst-da.svg" alt="LSST Discovery Alliance">
+        <img src="logos/rubin.png" alt="Vera C. Rubin Observatory">
+        <img src="logos/slac.svg" alt="SLAC National Accelerator Laboratory">
+        <img src="logos/kipac.png" alt="Kavli Institute for Particle Astrophysics and Cosmology (KIPAC)">
+        <img class="wordmark" src="logos/stanford.png" alt="Stanford University">
+      </div>
+
+      <p class="org-label">Host</p>
+      <p>Universidad de Antioquia · Medellín, Colombia</p>
+
+      <p class="org-label">Point of contact</p>
+      <p>Andrés Plazas Malagón · <a href="mailto:plazas@stanford.edu">plazas@stanford.edu</a></p>
+
+      <p class="ack">This event is supported by Schmidt Sciences and LSST Discovery Alliance.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
