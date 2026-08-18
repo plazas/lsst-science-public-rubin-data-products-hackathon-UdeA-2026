@@ -2,7 +2,7 @@
 
 **Open Tools, Open Sky: Doing LSST Science with Public Rubin Data and LINCC Frameworks** — A LATAM Hack Days Workshop.
 
-A 3-day, in-person hackathon at **Universidad de Antioquia, Medellín, Colombia** (October 2026) where ~25 participants and 5 Rubin mentors build science pipelines on broker-served Rubin alerts using LINCC Frameworks tools.
+A 3-day, in-person hackathon at **Universidad de Antioquia, Medellín, Colombia** (October 13–15, 2026) where participants and Rubin mentors build science pipelines on broker-served Rubin alerts using LINCC Frameworks tools.
 
 _This event is supported by Schmidt Sciences and LSST Discovery Alliance._
 
@@ -18,7 +18,7 @@ To publish with **GitHub Pages**: in the repo settings → Pages, set the source
 - `logos/` — Universidad de Antioquia, LINCC Frameworks, LSST Discovery Alliance, and Vera C. Rubin Observatory logos.
 
 ## Status
-First version. Still to be defined: final dates, the participant cohort, and local logistics (venue, travel, lodging).
+First version. Still to be defined: the participant cohort and local logistics (venue, travel, lodging).
 
 ## Point of contact
 Andrés Plazas Malagón — plazas@stanford.edu

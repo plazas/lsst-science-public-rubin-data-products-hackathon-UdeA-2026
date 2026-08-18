@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Open Tools, Open Sky — LSST Science with Public Rubin Data · Medellín 2026</title>
-  <meta name="description" content="A 3-day LATAM Hack Days workshop at Universidad de Antioquia, Medellín, doing LSST science with public Rubin data products and LINCC Frameworks tools. October 2026.">
+  <meta name="description" content="A 3-day LATAM Hack Days workshop at Universidad de Antioquia, Medellín, doing LSST science with public Rubin data products and LINCC Frameworks tools. October 13–15, 2026.">
 
   <style>
     :root {
@@ -158,6 +158,8 @@
       border-left: 4px solid var(--rubin-cyan); border-radius: 6px; padding: 18px 20px;
     }
     .mentor .name { font-weight: 700; font-size: 1.02rem; margin: 0 0 4px; }
+    .mentor .name a { color: var(--ink); text-decoration: none; }
+    .mentor .name a:hover { color: var(--accent); }
     .mentor .name .role {
       display: inline-block; margin-left: 8px; font-size: 0.72rem; font-weight: 600;
       letter-spacing: 0.06em; text-transform: uppercase; color: var(--rubin-teal);
@@ -189,6 +191,11 @@
     .slot.brk .desc { color: var(--faint); }
     .slot.hi .desc { font-weight: 600; }
 
+    /* ---- Showcase image band ---- */
+    .showcase { max-width: 1180px; margin: 44px auto 0; padding: 0 24px; text-align: center; }
+    .showcase img { width: 100%; height: auto; border-radius: 10px; box-shadow: 0 6px 18px rgba(0,0,0,0.12); display: block; }
+    .showcase .cap { font-size: 0.78rem; color: var(--faint); margin-top: 8px; }
+
     /* ---- Local info ---- */
     .local-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 34px; align-items: center; }
     .local-grid img { width: 100%; height: auto; border-radius: 8px; box-shadow: 0 6px 18px rgba(0,0,0,0.10); display: block; }
@@ -201,6 +208,8 @@
       padding: 26px; text-align: center; color: var(--faint);
     }
     .tbd strong { color: var(--ink); }
+    .tbd .priority { text-align: left; max-width: 44em; margin: 0 auto 16px; padding-left: 1.3em; }
+    .tbd .priority li { margin: 0 0 8px; }
 
     /* ---- People (organizers) ---- */
     .people { columns: 2; column-gap: 34px; margin: 0; padding: 0; list-style: none; }
@@ -249,7 +258,7 @@
       <a class="brandmark" href="#top">Open Tools, <span>Open Sky</span></a>
       <nav class="navlinks">
         <a href="#about">About</a>
-        <a href="#tracks">Tracks</a>
+        <a href="#topics">Topics</a>
         <a href="#agenda">Agenda</a>
         <a href="#mentors">Mentors</a>
         <a href="#tools">Data &amp; Tools</a>
@@ -270,8 +279,7 @@
         <p class="subtitle">Three days turning open access to Rubin's alert stream into working, broker-served science — in teams, paired with Rubin mentors.</p>
         <div class="meta">
           <span class="pill">📍 Universidad de Antioquia · Medellín, Colombia</span>
-          <span class="pill">🗓️ October 2026 · 3 days, in person</span>
-          <span class="pill">👥 ~25 participants + 5 mentors</span>
+          <span class="pill">🗓️ October 13–15, 2026 · 3 days, in person</span>
         </div>
         <div class="actions">
           <a class="btn" href="#about">About the event</a>
@@ -286,7 +294,7 @@
       <div class="wrap">
         <h2>About</h2>
         <p class="lead">Rubin Observatory's alert stream is the largest public astronomical data product ever released. Every alert packet, and every broker classification, is available to every astronomer — regardless of data-rights status. Yet without structured onboarding and the right tool guidance, that access remains opaque for many Latin American researchers.</p>
-        <p>Over three days in Medellín, ~25 students, early-career researchers, and senior LATAM scientists — working in teams paired with five Rubin mentors — will build functioning science pipelines on broker-served Rubin alerts using LINCC Frameworks tools. The event follows the sprint-driven model of the <a href="https://rubinalerts26.github.io/">Rubin Alerts &amp; AI Hackathon</a>: short context talks, pre-formed teams, daily stand-ups, and hack sprints punctuated by rapid team updates and a final show-and-tell.</p>
+        <p>Over three days in Medellín, students, early-career researchers, and senior LATAM scientists — working in teams paired with Rubin mentors — will build functioning science pipelines on broker-served Rubin alerts using LINCC Frameworks tools. The event follows the sprint-driven model of the <a href="https://rubinalerts26.github.io/">Rubin Alerts &amp; AI Hackathon</a>: short context talks, pre-formed teams, daily stand-ups, and hack sprints punctuated by rapid team updates and a final show-and-tell.</p>
 
         <div class="cards" style="margin-top:28px;">
           <div class="card">
@@ -301,35 +309,44 @@
           </div>
           <div class="card">
             <div class="num">Goal 03</div>
-            <h3>Produce a reusable toolkit</h3>
-            <p>A "Doing LSST Science without Data Rights" playbook and a public GitHub repository, proposed to the Rubin Community Science Team as documentation for the wider community.</p>
+            <h3>Give back to the community</h3>
+            <p>We will coordinate with Rubin's Community Science Team to include the lessons learned in documentation that will benefit the whole Rubin community.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== TRACKS ===== -->
-    <section id="tracks">
+    <!-- ===== SCIENCE TOPICS ===== -->
+    <section id="topics">
       <div class="wrap">
-        <h2>Science Tracks</h2>
-        <p class="lead">Teams of 4–5 are assembled in advance around a mentor-proposed science topic. Every team uses at least one LINCC Frameworks tool and at least one community broker.</p>
+        <h2>Science Topics</h2>
+        <p class="lead">Science topics are proposed by the mentors, and teams are assembled around them in advance. Every team uses at least one LINCC Frameworks tool and at least one community broker. Broad categories, drawn from the projects already proposed, include:</p>
         <div class="tracks">
           <div class="track">
-            <span class="tag">Track A</span>
-            <h3>Transient classification</h3>
-            <p>Detect, filter, and classify alert-stream transients — supernovae, GRBs, kilonovae, TDEs, and anomalous events.</p>
+            <h3>Transients &amp; supernovae</h3>
+            <p>Detecting and characterizing alert-stream transients, including Type Ia supernovae and their host galaxies.</p>
           </div>
           <div class="track">
-            <span class="tag">Track B</span>
-            <h3>Variable-star population science</h3>
-            <p>Period-finding and population studies on broker-served variables; crossmatch with Gaia, ZTF, and ATLAS archives.</p>
+            <h3>Variable stars &amp; the distance scale</h3>
+            <p>Period-finding and population studies of broker-served variable stars, and distance determination across the nearby Universe.</p>
           </div>
           <div class="track">
-            <span class="tag">Track C</span>
-            <h3>Selection-bias quantification</h3>
-            <p>Forward-model expected transient populations against the DP2 visits table and compare to broker-served samples.</p>
+            <h3>AGN &amp; alert classification</h3>
+            <p>Characterizing AGN, transients and variable stars in the Rubin alert stream using community brokers such as ALeRCE.</p>
+          </div>
+          <div class="track">
+            <h3>Solar System</h3>
+            <p>Exploring Rubin's Solar System discoveries and connecting them to the Minor Planet Center.</p>
+          </div>
+          <div class="track">
+            <h3>Anomaly detection</h3>
+            <p>Discovering the unexpected — mining the alert stream for rare and anomalous events.</p>
           </div>
         </div>
+      </div>
+      <div class="showcase">
+        <img src="figures_website/cosmos_rubin.jpeg" alt="A deep-field image of stars and galaxies from Vera C. Rubin Observatory">
+        <p class="cap">A Rubin deep field — the kind of public data this workshop builds on. Credit: NSF–DOE Vera C. Rubin Observatory.</p>
       </div>
     </section>
 
@@ -337,31 +354,31 @@
     <section id="mentors">
       <div class="wrap">
         <h2>Mentors &amp; Projects</h2>
-        <p class="lead">Five Rubin mentors lead pre-formed teams around the projects below. Each team pairs a mentor-proposed science question with hands-on Rubin alert data and LINCC Frameworks tools.</p>
+        <p class="lead">Rubin mentors lead pre-formed teams around the projects below. Each team pairs a mentor-proposed science question with hands-on Rubin alert data and LINCC Frameworks tools. Confirmed mentors, in alphabetical order:</p>
         <div class="mentors">
           <div class="mentor">
-            <p class="name">Yijung Kang <span class="role">Mentor</span></p>
+            <p class="name"><a href="https://rubinobservatory.org/explore/staff/alejandra-munoz-arancibia" target="_blank" rel="noopener">Alejandra Muñoz Arancibia ↗</a> <span class="role">Mentor</span></p>
             <ul>
-              <li>Matching host galaxies of SNe Ia using LSST alerts and archival catalog data.</li>
+              <li>Characterizing transients, AGN and variable stars in Rubin alerts using the ALeRCE broker.</li>
             </ul>
           </div>
           <div class="mentor">
-            <p class="name">Bolivia Cuevas <span class="role">Mentor</span></p>
+            <p class="name"><a href="https://orcid.org/0000-0002-1046-1500" target="_blank" rel="noopener">Bolivia Cuevas-Otahola ↗</a> <span class="role">Mentor</span></p>
             <ul>
               <li>Mapping the Nearby Universe: distance determination with variable stars in the Rubin alert stream.</li>
               <li>Discovering the Unexpected: anomaly detection in Rubin alert streams.</li>
             </ul>
           </div>
           <div class="mentor">
-            <p class="name">Alejandra Arancibia <span class="role">Mentor</span></p>
+            <p class="name"><a href="https://pbernardinelli.com/" target="_blank" rel="noopener">Pedro Bernardinelli ↗</a> <span class="role">Mentor</span></p>
             <ul>
-              <li>Characterizing transients, AGN and variable stars in Rubin alerts using the ALeRCE broker.</li>
+              <li>Exploring Rubin Solar System discoveries in the Minor Planet Center.</li>
             </ul>
           </div>
           <div class="mentor">
-            <p class="name">Pedro Bernardinelli <span class="role">Mentor</span></p>
+            <p class="name"><a href="https://kipac.stanford.edu/people/yijung-kang" target="_blank" rel="noopener">Yijung Kang ↗</a> <span class="role">Mentor</span></p>
             <ul>
-              <li>Exploring Rubin Solar System discoveries in the Minor Planet Center.</li>
+              <li>Matching host galaxies of SNe Ia using LSST alerts and archival catalog data.</li>
             </ul>
           </div>
         </div>
@@ -448,7 +465,7 @@
           <div>
             <p>The workshop is hosted by <strong>Universidad de Antioquia</strong> in <strong>Medellín, Colombia</strong> — the "City of Eternal Spring," set in a green Andean valley with a mild climate year-round and an easy international gateway via José María Córdova International Airport (MDE).</p>
             <p>The event is fully in-person. Participants should bring a laptop; a UdeA computer room with desktops will be reserved as a backup for applicants without portable hardware.</p>
-            <p class="note">Detailed venue, travel, and lodging information will be posted here as the dates are confirmed.</p>
+            <p class="note">Detailed venue, travel, and lodging information will be posted here as it is finalized.</p>
           </div>
           <div>
             <img src="figures_website/medellin.jpg" alt="Panoramic view of Medellín, Colombia, in its Andean valley">
@@ -463,8 +480,14 @@
       <div class="wrap">
         <h2>Participants</h2>
         <div class="tbd">
-          <p><strong>The participant cohort is still being defined.</strong></p>
-          <p style="margin:0;">~25 participants will be selected through the LSST-DA registration form, with a career-stage mix of ~70% early-career and ~30% senior researchers. Selection favors applicants without data rights, those from institutions with limited prior Rubin engagement, and those whose mentor-team pairing is most likely to yield a publication. The list will be published here once confirmed.</p>
+          <p><strong>We are still finalizing the participant list.</strong></p>
+          <p>In selecting participants, we will prioritize, in order:</p>
+          <ol class="priority">
+            <li>Researchers from LATAM countries without Rubin data rights;</li>
+            <li>Researchers in LATAM countries that have groups with data rights, but who are not themselves on that data-rights list;</li>
+            <li>Other participants from LATAM.</li>
+          </ol>
+          <p style="margin:0;">The workshop is open to both early-career researchers and senior participants, with the goal of building mid- and longer-term collaborations and cohort building.</p>
         </div>
       </div>
     </section>
@@ -473,7 +496,7 @@
     <section id="organizers">
       <div class="wrap">
         <h2>Organizers</h2>
-        <p class="lead"><strong>Principal Investigator:</strong> Andrés A. Plazas Malagón (SLAC National Accelerator Laboratory / KIPAC / Stanford University / Rubin).</p>
+        <p class="lead"><strong>Principal Investigator:</strong> Andrés A. Plazas Malagón (SLAC National Accelerator Laboratory / KIPAC / Stanford University / Vera C. Rubin Observatory).</p>
         <p style="font-weight:600; margin-bottom:10px;">Co-Investigators</p>
         <ul class="people">
           <li>Kristen Dage <span class="aff">· Curtin University</span></li>
@@ -482,7 +505,7 @@
           <li>Alma González <span class="aff">· Universidad de Guanajuato</span></li>
           <li>Juan Carlos Muñoz-Cuartas <span class="aff">· Universidad de Antioquia</span></li>
           <li>Yasna Ordenes Briceño <span class="aff">· Universidad Diego Portales</span></li>
-          <li>Karla Peña <span class="aff">· Rubin Observatory</span></li>
+          <li>Karla Peña Ramírez <span class="aff">· Vera C. Rubin Observatory</span></li>
           <li>Luis Salazar Manzano <span class="aff">· University of Michigan</span></li>
           <li>Mariano Domínguez <span class="aff">· UN de Córdoba &amp; U. de La Serena</span></li>
           <li>Tatiana Acero-Cuellar <span class="aff">· University of Delaware</span></li>
@@ -511,9 +534,11 @@
     <section id="contact">
       <div class="wrap">
         <h2>Contact</h2>
-        <p>For questions about the workshop, please contact the point of contact:</p>
+        <p>For questions about the workshop, please contact:</p>
         <p><strong>Andrés Plazas Malagón</strong> — <a href="mailto:plazas@stanford.edu">plazas@stanford.edu</a><br>
-        <span style="color:var(--faint); font-size:0.92rem;">SLAC National Accelerator Laboratory / KIPAC / Stanford University / Rubin Observatory</span></p>
+        <span style="color:var(--faint); font-size:0.92rem;">SLAC National Accelerator Laboratory / KIPAC / Stanford University / Vera C. Rubin Observatory</span></p>
+        <p><strong>Juan Carlos Muñoz-Cuartas</strong> (local host) — <a href="mailto:juan.munozc@udea.edu.co">juan.munozc@udea.edu.co</a><br>
+        <span style="color:var(--faint); font-size:0.92rem;">Universidad de Antioquia</span></p>
       </div>
     </section>
 
@@ -536,7 +561,8 @@
       <p>Universidad de Antioquia · Medellín, Colombia</p>
 
       <p class="org-label">Point of contact</p>
-      <p>Andrés Plazas Malagón · <a href="mailto:plazas@stanford.edu">plazas@stanford.edu</a></p>
+      <p>Andrés Plazas Malagón · <a href="mailto:plazas@stanford.edu">plazas@stanford.edu</a><br>
+      Juan Carlos Muñoz-Cuartas · <a href="mailto:juan.munozc@udea.edu.co">juan.munozc@udea.edu.co</a> · Universidad de Antioquia (local host)</p>
 
       <p class="ack">This event is supported by Schmidt Sciences and LSST Discovery Alliance.</p>
     </div>
