@@ -266,8 +266,48 @@
     footer p { margin: 0 0 8px; }
     footer .ack { color: #fff; font-weight: 500; margin-top: 18px; }
 
+    /* ---- Resources ---- */
+    .res-block { margin: 0 0 40px; }
+    .res-block:last-child { margin-bottom: 0; }
+    .res-block h3 {
+      margin: 0 0 6px; font-size: 1.2rem; font-weight: 800; letter-spacing: -0.01em;
+    }
+    .res-block .sub { margin: 0 0 16px; color: var(--muted); max-width: 48em; font-size: 0.96rem; }
+    .linklist { margin: 0; padding: 0; list-style: none; }
+    .linklist li { padding: 10px 0; border-top: 1px solid var(--rule); font-size: 0.95rem; }
+    .linklist li:first-child { border-top: none; }
+    .linklist li b { color: var(--ink); }
+    .linklist li .what { color: var(--faint); }
+    .tool-card {
+      background: var(--card); border: 1px solid var(--rule);
+      border-left: 4px solid var(--rubin-teal); border-radius: 6px;
+      padding: 16px 18px; margin: 0 0 14px;
+    }
+    .tool-card h4 { margin: 0 0 4px; font-size: 1.04rem; font-weight: 700; }
+    .tool-card p { margin: 0 0 9px; font-size: 0.93rem; color: var(--faint); }
+    .tool-card .links { font-size: 0.86rem; }
+    .tool-card .links a { margin: 0 14px 4px 0; display: inline-block; white-space: nowrap; }
+    .badge-open {
+      display: inline-block; background: #e6f6ee; color: #137a4d;
+      border: 1px solid #9ed9ba; font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      padding: 2px 8px; border-radius: 999px; margin-left: 8px; vertical-align: middle;
+    }
+    .sc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 34px; }
+    .callout {
+      background: linear-gradient(0deg, #eef6f7, #f7fbfb);
+      border: 1px solid var(--rubin-teal); border-radius: 8px;
+      padding: 18px 20px; margin: 20px 0 0; font-size: 0.95rem;
+    }
+    .callout strong { color: var(--ink); }
+    .glossary { margin: 0; }
+    .glossary dt { font-weight: 700; color: var(--ink); margin: 16px 0 2px; font-size: 0.97rem; }
+    .glossary dt:first-child { margin-top: 0; }
+    .glossary dd { margin: 0; color: var(--faint); font-size: 0.93rem; }
+
     @media (max-width: 820px) {
       .cards, .tracks, .agenda-grid { grid-template-columns: 1fr; }
+      .sc-grid { grid-template-columns: 1fr; }
       .mentors, .tools, .local-grid { grid-template-columns: 1fr; }
       .people { columns: 1; }
       .hero h1 { font-size: 2.2rem; }
@@ -288,6 +328,7 @@
           <a href="#agenda" data-i18n="nav.agenda">Agenda</a>
           <a href="#mentors" data-i18n="nav.mentors">Mentors</a>
           <a href="#tools" data-i18n="nav.tools">Data &amp; Tools</a>
+          <a href="#resources" data-i18n="nav.resources">Resources</a>
           <a href="#local-info" data-i18n="nav.local">Local Info</a>
           <a href="#participants" data-i18n="nav.participants">Participants</a>
           <a href="#contact" data-i18n="nav.contact">Contact</a>
@@ -452,8 +493,9 @@
             <div class="slot hi"><span class="time">09:20</span><span class="desc" data-i18n="ag.rubinov">Rubin public data + alerts overview</span></div>
             <div class="slot brk"><span class="time">10:15</span><span class="desc" data-i18n="ag.coffee">Coffee break</span></div>
             <div class="slot"><span class="time">10:45</span><span class="desc" data-i18n="ag.broker">Broker crash course</span></div>
-            <div class="slot"><span class="time">11:30</span><span class="desc" data-i18n="ag.rotations">LINCC Frameworks rotations</span></div>
-            <div class="slot brk"><span class="time">13:00</span><span class="desc" data-i18n="ag.lunch">Working lunch</span></div>
+            <div class="slot"><span class="time">11:30</span><span class="desc" data-i18n="ag.rotations">LINCC Frameworks introduction</span></div>
+            <div class="slot"><span class="time">12:15</span><span class="desc" data-i18n="ag.lightning">Lightning talks from participants</span></div>
+            <div class="slot brk"><span class="time">13:00</span><span class="desc" data-i18n="ag.lunch">Lunch</span></div>
             <div class="slot hi"><span class="time">14:00</span><span class="desc">Sprint 1</span></div>
             <div class="slot"><span class="time">17:00</span><span class="desc" data-i18n="ag.updates_retro">Team updates + retrospective</span></div>
             <div class="slot"><span class="time">18:00</span><span class="desc" data-i18n="ag.reception">Welcome reception</span></div>
@@ -464,7 +506,7 @@
             <p class="date" data-i18n="agenda.day2t">Sprints + SC Pathways</p>
             <div class="slot"><span class="time">09:00</span><span class="desc" data-i18n="ag.standup">Team stand-up</span></div>
             <div class="slot hi"><span class="time">09:30</span><span class="desc">Sprint 2</span></div>
-            <div class="slot brk"><span class="time">12:30</span><span class="desc" data-i18n="ag.lunch">Working lunch</span></div>
+            <div class="slot brk"><span class="time">12:30</span><span class="desc" data-i18n="ag.lunch">Lunch</span></div>
             <div class="slot"><span class="time">13:30</span><span class="desc" data-i18n="ag.scpanel">Rubin SC pathways panel</span></div>
             <div class="slot hi"><span class="time">14:30</span><span class="desc">Sprint 3</span></div>
             <div class="slot brk"><span class="time">15:45</span><span class="desc" data-i18n="ag.coffee">Coffee break</span></div>
@@ -478,7 +520,7 @@
             <p class="date" data-i18n="agenda.day3t">Sprint + Show-and-Tell</p>
             <div class="slot"><span class="time">09:00</span><span class="desc" data-i18n="ag.standup">Team stand-up</span></div>
             <div class="slot hi"><span class="time">09:30</span><span class="desc">Sprint 4</span></div>
-            <div class="slot brk"><span class="time">12:30</span><span class="desc" data-i18n="ag.lunch">Working lunch</span></div>
+            <div class="slot brk"><span class="time">12:30</span><span class="desc" data-i18n="ag.lunch">Lunch</span></div>
             <div class="slot"><span class="time">13:30</span><span class="desc" data-i18n="ag.pubworkshop">Publication pathway workshop</span></div>
             <div class="slot"><span class="time">14:30</span><span class="desc" data-i18n="ag.sprint4cont">Sprint 4 continues</span></div>
             <div class="slot brk"><span class="time">15:30</span><span class="desc" data-i18n="ag.coffee">Coffee break</span></div>
@@ -489,6 +531,171 @@
 
         </div>
         <p class="note" data-i18n="agenda.note">Draft schedule — subject to change. The event is scheduled after the early DP2 release window (RTN-011).</p>
+      </div>
+    </section>
+
+    <!-- ===== RESOURCES ===== -->
+    <section id="resources">
+      <div class="wrap">
+        <h2 data-i18n="res.h2">Resources</h2>
+        <p class="lead" data-i18n="res.lead">A curated starting point for participants — Rubin's public data and documentation, the community alert brokers, the LINCC Frameworks tools with their tutorials, the LSST Science Collaborations you can join (several without data rights), and a glossary of key terms. We encourage you to explore these before the workshop.</p>
+
+        <!-- Rubin & LSST official -->
+        <div class="res-block">
+          <h3 data-i18n="res.rubin.h">Rubin &amp; LSST — official pages</h3>
+          <p class="sub" data-i18n="res.rubin.sub">The Vera C. Rubin Observatory conducts the Legacy Survey of Space and Time (LSST). Start here for the observatory, its public data products, and documentation.</p>
+          <ul class="linklist">
+            <li data-i18n="res.rubin.l1"><a href="https://rubinobservatory.org/" target="_blank" rel="noopener"><b>Rubin Observatory ↗</b></a> <span class="what">— main site: mission, news, and how Rubin works.</span></li>
+            <li data-i18n="res.rubin.l2"><a href="https://rubinobservatory.org/for-scientists/data-products" target="_blank" rel="noopener"><b>Data products ↗</b></a> <span class="what">— overview of Prompt products (alerts), Data Release products, and access.</span></li>
+            <li data-i18n="res.rubin.l3"><a href="https://rubinobservatory.org/for-scientists/data-products/alerts-and-brokers" target="_blank" rel="noopener"><b>Alerts &amp; brokers ↗</b></a> <span class="what">— the public alert stream and the community brokers that serve it.</span></li>
+            <li data-i18n="res.rubin.l4"><a href="https://rubinobservatory.org/explore/how-rubin-works/alerts" target="_blank" rel="noopener"><b>How alerts work ↗</b></a> <span class="what">— what a Rubin alert is and how the stream is produced.</span></li>
+            <li data-i18n="res.rubin.l5"><a href="https://rubinobservatory.org/for-scientists/resources" target="_blank" rel="noopener"><b>Resources for scientists ↗</b></a> <span class="what">— tutorials, the Rubin Science Platform, and community support.</span></li>
+            <li data-i18n="res.rubin.l6"><a href="https://rubinobservatory.org/for-scientists/documentation" target="_blank" rel="noopener"><b>Documentation &amp; publications ↗</b></a> <span class="what">— technical notes and Rubin/LSST papers.</span></li>
+          </ul>
+        </div>
+
+        <!-- Brokers -->
+        <div class="res-block">
+          <h3 data-i18n="res.brokers.h">Alert brokers</h3>
+          <p class="sub" data-i18n="res.brokers.sub">Brokers ingest Rubin's full public alert stream, add value (cross-matches, features, machine-learning classifications), and let you filter and retrieve events for your science. No LSST data rights are required to use them. A great overview and side-by-side comparison lives in the community Broker Wiki:</p>
+          <ul class="linklist">
+            <li data-i18n="res.brokers.wiki"><a href="https://errai34.github.io/rubin-broker-wiki" target="_blank" rel="noopener"><b>Rubin Broker Wiki ↗</b></a> <span class="what">— how to choose a broker for your science case, with a feature comparison across brokers.</span></li>
+            <li data-i18n="res.brokers.alerce"><a href="https://alerce.online/" target="_blank" rel="noopener"><b>ALeRCE ↗</b></a> <span class="what">— dynamic catalog and broker with cross-matched, annotated, machine-learning-classified light curves.</span></li>
+            <li data-i18n="res.brokers.antares"><a href="https://antares.noirlab.edu/" target="_blank" rel="noopener"><b>ANTARES ↗</b></a> <span class="what">— NOIRLab real-time broker adding context from multiwavelength catalogs and event history.</span></li>
+            <li data-i18n="res.brokers.ampel"><a href="https://ampelproject.github.io/" target="_blank" rel="noopener"><b>AMPEL ↗</b></a> <span class="what">— modular platform for real-time and offline alert processing with explicit provenance tracking.</span></li>
+            <li data-i18n="res.brokers.babamul"><a href="https://docs.babamul.dev/" target="_blank" rel="noopener"><b>Babamul ↗</b></a> <span class="what">— lightweight, open-source broker that restructures the stream into smaller science-ready channels.</span></li>
+            <li data-i18n="res.brokers.fink"><a href="https://fink-broker.org/" target="_blank" rel="noopener"><b>Fink ↗</b></a> <span class="what">— community broker with catalog/stream cross-matches, feature engineering, and machine-learning enrichment.</span></li>
+            <li data-i18n="res.brokers.lasair"><a href="https://lasair.lsst.ac.uk/" target="_blank" rel="noopener"><b>Lasair ↗</b></a> <span class="what">— UK broker built around real-time SQL filters, light-curve features, and intelligent cross-match.</span></li>
+            <li data-i18n="res.brokers.pittgoogle"><a href="https://pitt-broker.readthedocs.io/" target="_blank" rel="noopener"><b>Pitt-Google ↗</b></a> <span class="what">— cloud-based broker and data-distribution service for scalable public access to LSST alerts.</span></li>
+          </ul>
+          <p class="note" data-i18n="res.brokers.note">Downstream brokers — such as POI (variable-star light curves) and SNAPS (Solar System) — build on the streams above; see the Broker Wiki for the full list of nine.</p>
+        </div>
+
+        <!-- LINCC Frameworks -->
+        <div class="res-block">
+          <h3 data-i18n="res.lincc.h">LINCC Frameworks tools</h3>
+          <p class="sub" data-i18n="res.lincc.sub">LINCC Frameworks (an LSST Discovery Alliance program) builds open-source tools for analysis at LSST scale. Below are the tools we will use, each with documentation, tutorials, and its LSST-DA Slack channel. See the full <a href="https://lsstdiscoveryalliance.org/programs/lincc-frameworks/areas-focus/" target="_blank" rel="noopener">areas of focus ↗</a> and the <a href="https://www.youtube.com/watch?v=zHpycfwU1fk" target="_blank" rel="noopener">overview tech talk ↗</a>.</p>
+
+          <div class="tool-card">
+            <h4>LSDB / HATS</h4>
+            <p data-i18n="res.lincc.lsdb.p">Scalable spatial analysis. HATS (Hierarchical Adaptive Tiling System) is a Parquet-based catalog format with dynamic spatial partitioning; LSDB is a Dask-based, pandas-like framework for parallel, distributed analysis and cross-matching over large catalogs. A HATS version of Rubin DP2 is available at data.lsdb.io.</p>
+            <p class="links">
+              <a href="https://docs.lsdb.io/en/latest/" target="_blank" rel="noopener">LSDB docs ↗</a>
+              <a href="https://hats.readthedocs.io/en/latest/" target="_blank" rel="noopener">HATS docs ↗</a>
+              <a href="https://docs.lsdb.io/en/latest/tutorial_toc/toc_rubin.html" target="_blank" rel="noopener">Rubin tutorials ↗</a>
+              <a href="https://data.lsdb.io/" target="_blank" rel="noopener">Datasets ↗</a>
+              <span class="what">Slack: #lincc-frameworks-lsdb</span>
+            </p>
+          </div>
+
+          <div class="tool-card">
+            <h4>Hyrax</h4>
+            <p data-i18n="res.lincc.hyrax.p">A low-code framework for training and analyzing machine-learning models reproducibly — cutout acquisition, data loading, hyperparameter tuning, model logging, inference, similarity search, and anomaly detection, scaling from laptop to cloud.</p>
+            <p class="links">
+              <a href="https://hyrax.readthedocs.io/en/stable/" target="_blank" rel="noopener">Docs ↗</a>
+              <a href="https://github.com/lincc-frameworks/hyrax" target="_blank" rel="noopener">GitHub ↗</a>
+              <a href="https://www.youtube.com/watch?v=bZ920KDt4yo" target="_blank" rel="noopener">Intro talk (video) ↗</a>
+              <span class="what">Slack: #lincc-frameworks-hyrax</span>
+            </p>
+          </div>
+
+          <div class="tool-card">
+            <h4>LightCurveLynx</h4>
+            <p data-i18n="res.lincc.lcl.p">Flexible, scalable time-domain simulation software with realistic effects and survey strategies, wrapping many existing simulation packages — e.g. to model an expected population (such as Type Ia supernovae) and study selection biases against Rubin data.</p>
+            <p class="links">
+              <a href="https://lightcurvelynx.readthedocs.io/en/latest/" target="_blank" rel="noopener">Docs ↗</a>
+              <a href="https://lightcurvelynx.readthedocs.io/en/latest/notebooks.html" target="_blank" rel="noopener">Tutorials ↗</a>
+              <a href="https://lightcurvelynx.readthedocs.io/en/latest/notebooks/pre_executed/rubin_dp2.html" target="_blank" rel="noopener">Rubin DP2 tutorial ↗</a>
+              <a href="https://github.com/lincc-frameworks/lightcurvelynx" target="_blank" rel="noopener">GitHub ↗</a>
+              <a href="https://www.youtube.com/watch?v=H0HqXD2iS94" target="_blank" rel="noopener">Intro talk (video) ↗</a>
+              <span class="what">Slack: #lincc-frameworks-lightcurvelynx</span>
+            </p>
+          </div>
+
+          <div class="tool-card">
+            <h4>RAIL <span class="what" data-i18n="res.lincc.rail.tag">(photo-z, with DESC)</span></h4>
+            <p data-i18n="res.lincc.rail.p">Redshift Assessment Infrastructure Layers — a modular toolkit for Rubin-wide photometric-redshift pipelines: creation of mock photometry, estimation by many algorithms under a shared API, and evaluation of performance metrics.</p>
+            <p class="links">
+              <a href="https://rail-hub.readthedocs.io/en/latest/" target="_blank" rel="noopener">Docs ↗</a>
+              <a href="http://github.com/LSSTDESC/rail" target="_blank" rel="noopener">GitHub ↗</a>
+              <span class="what">Slack: #desc-pz-rail</span>
+            </p>
+          </div>
+
+          <p class="note" data-i18n="res.lincc.more">Also in the LINCC Frameworks ecosystem: <b>nested-pandas</b> (scalable time-series tables), <b>KBMOD</b> (moving-object / Solar System detection), and the <a href="https://github.com/lincc-frameworks/python-project-template" target="_blank" rel="noopener">Python Project Template ↗</a> for reproducible packages. General help on Slack: #lincc-frameworks-qa · #lincc-tech-talks · #lincc-frameworks-dev</p>
+        </div>
+
+        <!-- Science Collaborations -->
+        <div class="res-block">
+          <h3 data-i18n="res.sc.h">LSST Science Collaborations</h3>
+          <p class="sub" data-i18n="res.sc.sub">The <a href="https://lsstdiscoveryalliance.org/" target="_blank" rel="noopener">LSST Discovery Alliance (LSST-DA) ↗</a> supports the eight <a href="https://lsstdiscoveryalliance.org/lsst-science-collaborations/" target="_blank" rel="noopener">LSST Science Collaborations ↗</a> — communities organized around science themes. Crucially, <strong>several are open to join without LSST data rights</strong>. Joining one before the workshop lets us collaborate on the LSST-DA Slack.</p>
+          <ul class="linklist sc-grid">
+            <li data-i18n="res.sc.agn"><a href="http://agn.science.lsst.org" target="_blank" rel="noopener"><b>AGN ↗</b></a> <span class="badge-open" data-i18n="res.sc.openbadge">No data rights</span> <span class="what">— Active Galactic Nuclei.</span></li>
+            <li data-i18n="res.sc.tvs"><a href="http://lsst-tvssc.github.io" target="_blank" rel="noopener"><b>TVS ↗</b></a> <span class="badge-open" data-i18n="res.sc.openbadge">No data rights</span> <span class="what">— Transients &amp; Variable Stars.</span></li>
+            <li data-i18n="res.sc.smwlv"><a href="https://rubin-smwlv.github.io/" target="_blank" rel="noopener"><b>SMWLV ↗</b></a> <span class="badge-open" data-i18n="res.sc.openbadge">No data rights</span> <span class="what">— Stars, Milky Way &amp; Local Volume; open to everyone.</span></li>
+            <li data-i18n="res.sc.issc"><a href="http://issc.science.lsst.org" target="_blank" rel="noopener"><b>ISSC ↗</b></a> <span class="badge-open" data-i18n="res.sc.openbadge">No data rights</span> <span class="what">— Informatics &amp; Statistics.</span></li>
+            <li data-i18n="res.sc.galaxies"><a href="https://sites.google.com/view/lsstgsc/home" target="_blank" rel="noopener"><b>Galaxies ↗</b></a> <span class="what">— galaxy formation and evolution.</span></li>
+            <li data-i18n="res.sc.sssc"><a href="http://lsst-sssc.github.io" target="_blank" rel="noopener"><b>SSSC ↗</b></a> <span class="what">— Solar System.</span></li>
+            <li data-i18n="res.sc.slsc"><a href="https://sites.google.com/view/lsst-stronglensing" target="_blank" rel="noopener"><b>SLSC ↗</b></a> <span class="what">— Strong Lensing.</span></li>
+            <li data-i18n="res.sc.desc"><a href="http://lsst-desc.org" target="_blank" rel="noopener"><b>DESC ↗</b></a> <span class="what">— Dark Energy.</span></li>
+          </ul>
+          <div class="callout" data-i18n="res.sc.callout">💬 <strong>Before the workshop:</strong> we encourage you to join one of the no-data-rights collaborations above (AGN, TVS, SMWLV, or ISSC). Membership gives you access to the LSST-DA Slack, where we will coordinate teams and continue collaborating after the event.</div>
+        </div>
+
+        <!-- Glossary -->
+        <div class="res-block">
+          <h3 data-i18n="res.gloss.h">Glossary of key terms</h3>
+          <p class="sub" data-i18n="res.gloss.sub">A quick reference to terms you will hear during the workshop. For the complete, official list, see the Rubin/LSST <a href="https://www.lsst.org/scientists/glossary-acronyms" target="_blank" rel="noopener">Glossary &amp; Acronyms ↗</a> (searchable, English &amp; Spanish) and the simpler <a href="https://rubinobservatory.org/education/glossary" target="_blank" rel="noopener">education glossary ↗</a>.</p>
+          <dl class="glossary">
+            <dt data-i18n="res.gloss.rubin.t">Vera C. Rubin Observatory</dt>
+            <dd data-i18n="res.gloss.rubin.d">The NSF–DOE observatory in Chile conducting the LSST — an 8.4 m telescope with a 3.2-gigapixel camera imaging the entire southern sky every few nights.</dd>
+            <dt data-i18n="res.gloss.lsst.t">LSST (Legacy Survey of Space and Time)</dt>
+            <dd data-i18n="res.gloss.lsst.d">Rubin's flagship 10-year survey, repeatedly imaging the sky to build a deep, time-resolved map of the Universe.</dd>
+            <dt data-i18n="res.gloss.lsstda.t">LSST-DA (LSST Discovery Alliance)</dt>
+            <dd data-i18n="res.gloss.lsstda.d">The organization that fosters the LSST science community — hosting the Science Collaborations, LINCC Frameworks, and the community Slack.</dd>
+            <dt data-i18n="res.gloss.lincc.t">LINCC Frameworks</dt>
+            <dd data-i18n="res.gloss.lincc.d">An LSST-DA program developing open-source software (LSDB/HATS, Hyrax, LightCurveLynx, RAIL, KBMOD, …) for astronomy at LSST scale.</dd>
+            <dt data-i18n="res.gloss.datarights.t">Data rights</dt>
+            <dd data-i18n="res.gloss.datarights.d">The formal authorization to access Rubin's proprietary (non-public) data products during the survey. Granted to scientists in the US and Chile and to institutions with in-kind contributions.</dd>
+            <dt data-i18n="res.gloss.nodatarights.t">Without data rights</dt>
+            <dd data-i18n="res.gloss.nodatarights.d">Not holding proprietary access. This workshop is designed for exactly this case: the public alert stream and broker products are open to everyone, no data rights required.</dd>
+            <dt data-i18n="res.gloss.public.t">Public data</dt>
+            <dd data-i18n="res.gloss.public.d">Rubin data products available to anyone, worldwide — above all the alert stream and the broker classifications built on it.</dd>
+            <dt data-i18n="res.gloss.dataproducts.t">Data products</dt>
+            <dd data-i18n="res.gloss.dataproducts.d">The catalogs, images, and alerts Rubin generates: Prompt products (nightly, including alerts) and Data Release products (annual, mostly rights-restricted).</dd>
+            <dt data-i18n="res.gloss.prompt.t">Prompt products</dt>
+            <dd data-i18n="res.gloss.prompt.d">Products generated within ~60 seconds of each observation, including difference images and the alerts that flag changes in the sky.</dd>
+            <dt data-i18n="res.gloss.alert.t">Alert</dt>
+            <dd data-i18n="res.gloss.alert.d">A message issued when Rubin detects a change (a new, brightening, fading, or moving source) in a difference image. It carries the measurement plus a short history.</dd>
+            <dt data-i18n="res.gloss.alertpacket.t">Alert packet</dt>
+            <dd data-i18n="res.gloss.alertpacket.d">The structured data record of a single alert — photometry, position, recent light-curve history, and image cutouts.</dd>
+            <dt data-i18n="res.gloss.alertstream.t">Alert stream</dt>
+            <dd data-i18n="res.gloss.alertstream.d">The continuous flow of alert packets (up to ~10 million per night) that Rubin broadcasts publicly to the brokers.</dd>
+            <dt data-i18n="res.gloss.broker.t">Broker</dt>
+            <dd data-i18n="res.gloss.broker.d">Software that ingests the full alert stream, enriches it (cross-matching, features, machine-learning classification), and lets scientists filter and retrieve events — no data rights required.</dd>
+            <dt data-i18n="res.gloss.sc.t">Science Collaboration (SC)</dt>
+            <dd data-i18n="res.gloss.sc.d">A community of scientists organized around an LSST science theme (e.g. AGN, TVS). Several accept members without data rights.</dd>
+            <dt data-i18n="res.gloss.dp.t">DP1 / DP2 (Data Previews)</dt>
+            <dd data-i18n="res.gloss.dp.d">Early Rubin data releases used to prepare the community for full operations. A HATS version of DP2 is available for LSDB.</dd>
+            <dt data-i18n="res.gloss.lightcurve.t">Light curve</dt>
+            <dd data-i18n="res.gloss.lightcurve.d">A source's brightness measured over time — the core of time-domain astronomy and of many alert-based analyses.</dd>
+            <dt data-i18n="res.gloss.transient.t">Transient</dt>
+            <dd data-i18n="res.gloss.transient.d">A short-lived astronomical event that appears and fades — e.g. supernovae, tidal disruption events, kilonovae.</dd>
+            <dt data-i18n="res.gloss.variable.t">Variable star</dt>
+            <dd data-i18n="res.gloss.variable.d">A star whose brightness changes over time; period-finding on their light curves supports distance and population studies.</dd>
+            <dt data-i18n="res.gloss.agn.t">AGN (Active Galactic Nucleus)</dt>
+            <dd data-i18n="res.gloss.agn.d">The luminous, accreting supermassive black hole at a galaxy's center; often variable, and identifiable in the alert stream.</dd>
+            <dt data-i18n="res.gloss.crossmatch.t">Cross-match</dt>
+            <dd data-i18n="res.gloss.crossmatch.d">Associating sources between catalogs by sky position (e.g. matching Rubin alerts to Gaia, ZTF, or ATLAS). LSDB/HATS make this efficient at scale.</dd>
+            <dt data-i18n="res.gloss.hats.t">HATS / LSDB</dt>
+            <dd data-i18n="res.gloss.hats.d">HATS is a spatially partitioned catalog format; LSDB is the framework that analyzes and cross-matches HATS catalogs in parallel.</dd>
+            <dt data-i18n="res.gloss.photoz.t">Photometric redshift (photo-z)</dt>
+            <dd data-i18n="res.gloss.photoz.d">An estimate of a galaxy's redshift (distance) from its brightness in several filters rather than a spectrum. Handled by RAIL.</dd>
+            <dt data-i18n="res.gloss.mpc.t">Minor Planet Center (MPC)</dt>
+            <dd data-i18n="res.gloss.mpc.d">The international clearing house for Solar System small-body observations and orbits, to which Rubin's discoveries are reported.</dd>
+          </dl>
+        </div>
+
       </div>
     </section>
 
@@ -615,7 +822,8 @@
     const I18N = {
       es: {
         "nav.about": "Acerca de", "nav.topics": "Temas", "nav.agenda": "Agenda",
-        "nav.mentors": "Mentores", "nav.tools": "Datos y herramientas", "nav.local": "Información local",
+        "nav.mentors": "Mentores", "nav.tools": "Datos y herramientas",
+        "nav.resources": "Recursos", "nav.local": "Información local",
         "nav.participants": "Participantes", "nav.contact": "Contacto", "nav.apply": "Postular",
         "hero.eyebrow": "Un taller LATAM Hack Days",
         "hero.title": `<em>Open Tools, Open Sky:</em> Ciencia con LSST usando datos públicos de Rubin y LINCC Frameworks`,
@@ -663,6 +871,95 @@
         "tools.t5": `<b>Paquetes de alertas de Rubin</b> <span class="what">— el flujo público de alertas, abierto a cualquier astrónomo/a.</span>`,
         "tools.t6": `<b>Sondeos complementarios</b> <span class="what">— Gaia, ZTF, ATLAS, Roman para cruce de catálogos.</span>`,
         "tools.note": "Antes del evento (T–2 semanas): un tutorial autoguiado de ~2 horas sobre LSDB/HATS, Hyrax y LightCurveLynx, además de una breve reunión inicial por Zoom con el mentor de cada equipo para definir la pregunta científica y repartir las primeras tareas.",
+        "res.h2": "Recursos",
+        "res.lead": "Un punto de partida seleccionado para las personas participantes — los datos públicos y la documentación de Rubin, los brokers de alertas de la comunidad, las herramientas de LINCC Frameworks con sus tutoriales, las Colaboraciones Científicas de LSST a las que puedes unirte (varias sin derechos sobre los datos) y un glosario de términos clave. Te animamos a explorarlos antes del taller.",
+        "res.rubin.h": "Rubin y LSST — páginas oficiales",
+        "res.rubin.sub": "El Observatorio Vera C. Rubin realiza el Legacy Survey of Space and Time (LSST). Empieza aquí para conocer el observatorio, sus productos de datos públicos y su documentación.",
+        "res.rubin.l1": `<a href="https://rubinobservatory.org/" target="_blank" rel="noopener"><b>Observatorio Rubin ↗</b></a> <span class="what">— sitio principal: misión, noticias y cómo funciona Rubin.</span>`,
+        "res.rubin.l2": `<a href="https://rubinobservatory.org/for-scientists/data-products" target="_blank" rel="noopener"><b>Productos de datos ↗</b></a> <span class="what">— panorama de los productos Prompt (alertas), los productos de Data Release y su acceso.</span>`,
+        "res.rubin.l3": `<a href="https://rubinobservatory.org/for-scientists/data-products/alerts-and-brokers" target="_blank" rel="noopener"><b>Alertas y brokers ↗</b></a> <span class="what">— el flujo público de alertas y los brokers de la comunidad que lo sirven.</span>`,
+        "res.rubin.l4": `<a href="https://rubinobservatory.org/explore/how-rubin-works/alerts" target="_blank" rel="noopener"><b>Cómo funcionan las alertas ↗</b></a> <span class="what">— qué es una alerta de Rubin y cómo se produce el flujo.</span>`,
+        "res.rubin.l5": `<a href="https://rubinobservatory.org/for-scientists/resources" target="_blank" rel="noopener"><b>Recursos para científicos ↗</b></a> <span class="what">— tutoriales, la Rubin Science Platform y soporte de la comunidad.</span>`,
+        "res.rubin.l6": `<a href="https://rubinobservatory.org/for-scientists/documentation" target="_blank" rel="noopener"><b>Documentación y publicaciones ↗</b></a> <span class="what">— notas técnicas y artículos de Rubin/LSST.</span>`,
+        "res.brokers.h": "Brokers de alertas",
+        "res.brokers.sub": "Los brokers reciben el flujo público completo de alertas de Rubin, le agregan valor (cruces de catálogos, características, clasificaciones con aprendizaje automático) y te permiten filtrar y recuperar eventos para tu ciencia. No se requieren derechos sobre los datos de LSST para usarlos. Una excelente introducción y comparación lado a lado está en la Broker Wiki de la comunidad:",
+        "res.brokers.wiki": `<a href="https://errai34.github.io/rubin-broker-wiki" target="_blank" rel="noopener"><b>Rubin Broker Wiki ↗</b></a> <span class="what">— cómo elegir un broker para tu caso científico, con una comparación de características entre brokers.</span>`,
+        "res.brokers.alerce": `<a href="https://alerce.online/" target="_blank" rel="noopener"><b>ALeRCE ↗</b></a> <span class="what">— catálogo dinámico y broker con curvas de luz cruzadas, anotadas y clasificadas con aprendizaje automático.</span>`,
+        "res.brokers.antares": `<a href="https://antares.noirlab.edu/" target="_blank" rel="noopener"><b>ANTARES ↗</b></a> <span class="what">— broker en tiempo real de NOIRLab que añade contexto de catálogos multibanda e historial de eventos.</span>`,
+        "res.brokers.ampel": `<a href="https://ampelproject.github.io/" target="_blank" rel="noopener"><b>AMPEL ↗</b></a> <span class="what">— plataforma modular para procesamiento de alertas en tiempo real y offline con trazabilidad explícita de la procedencia.</span>`,
+        "res.brokers.babamul": `<a href="https://docs.babamul.dev/" target="_blank" rel="noopener"><b>Babamul ↗</b></a> <span class="what">— broker ligero y de código abierto que reestructura el flujo en canales más pequeños y listos para la ciencia.</span>`,
+        "res.brokers.fink": `<a href="https://fink-broker.org/" target="_blank" rel="noopener"><b>Fink ↗</b></a> <span class="what">— broker comunitario con cruces de catálogo/flujo, ingeniería de características y enriquecimiento con aprendizaje automático.</span>`,
+        "res.brokers.lasair": `<a href="https://lasair.lsst.ac.uk/" target="_blank" rel="noopener"><b>Lasair ↗</b></a> <span class="what">— broker del Reino Unido basado en filtros SQL en tiempo real, características de curvas de luz y cruce inteligente.</span>`,
+        "res.brokers.pittgoogle": `<a href="https://pitt-broker.readthedocs.io/" target="_blank" rel="noopener"><b>Pitt-Google ↗</b></a> <span class="what">— broker en la nube y servicio de distribución de datos para acceso público escalable a las alertas de LSST.</span>`,
+        "res.brokers.note": "Brokers derivados —como POI (curvas de luz de estrellas variables) y SNAPS (Sistema Solar)— se construyen sobre los flujos anteriores; consulta la Broker Wiki para la lista completa de nueve.",
+        "res.lincc.h": "Herramientas de LINCC Frameworks",
+        "res.lincc.sub": `LINCC Frameworks (un programa de la LSST Discovery Alliance) desarrolla herramientas de código abierto para el análisis a la escala de LSST. Abajo están las herramientas que usaremos, cada una con documentación, tutoriales y su canal de Slack de LSST-DA. Consulta las <a href="https://lsstdiscoveryalliance.org/programs/lincc-frameworks/areas-focus/" target="_blank" rel="noopener">áreas de enfoque ↗</a> y la <a href="https://www.youtube.com/watch?v=zHpycfwU1fk" target="_blank" rel="noopener">charla técnica de introducción ↗</a>.`,
+        "res.lincc.lsdb.p": "Análisis espacial escalable. HATS (Hierarchical Adaptive Tiling System) es un formato de catálogos basado en Parquet con partición espacial dinámica; LSDB es un framework basado en Dask, con interfaz tipo pandas, para análisis y cruce distribuido y paralelo sobre grandes catálogos. Hay una versión HATS de Rubin DP2 en data.lsdb.io.",
+        "res.lincc.hyrax.p": "Un framework de bajo código para entrenar y analizar modelos de aprendizaje automático de forma reproducible — obtención de recortes, carga de datos, ajuste de hiperparámetros, registro de modelos, inferencia, búsqueda por similitud y detección de anomalías, escalando desde la laptop hasta la nube.",
+        "res.lincc.lcl.p": "Software de simulación en el dominio temporal, flexible y escalable, con efectos realistas y estrategias de sondeo, que integra muchos paquetes de simulación existentes — p. ej. para modelar una población esperada (como supernovas de Tipo Ia) y estudiar sesgos de selección frente a los datos de Rubin.",
+        "res.lincc.rail.tag": "(photo-z, con DESC)",
+        "res.lincc.rail.p": "Redshift Assessment Infrastructure Layers — un conjunto modular de herramientas para pipelines de corrimiento al rojo fotométrico a escala de Rubin: creación de fotometría simulada, estimación por muchos algoritmos bajo una API común y evaluación de métricas de desempeño.",
+        "res.lincc.more": `También en el ecosistema de LINCC Frameworks: <b>nested-pandas</b> (tablas escalables de series temporales), <b>KBMOD</b> (detección de objetos en movimiento / Sistema Solar) y la <a href="https://github.com/lincc-frameworks/python-project-template" target="_blank" rel="noopener">Python Project Template ↗</a> para paquetes reproducibles. Ayuda general en Slack: #lincc-frameworks-qa · #lincc-tech-talks · #lincc-frameworks-dev`,
+        "res.sc.h": "Colaboraciones Científicas de LSST",
+        "res.sc.sub": `La <a href="https://lsstdiscoveryalliance.org/" target="_blank" rel="noopener">LSST Discovery Alliance (LSST-DA) ↗</a> apoya las ocho <a href="https://lsstdiscoveryalliance.org/lsst-science-collaborations/" target="_blank" rel="noopener">Colaboraciones Científicas de LSST ↗</a> — comunidades organizadas en torno a temas científicos. Es fundamental que <strong>varias están abiertas para unirse sin derechos sobre los datos de LSST</strong>. Unirte a una antes del taller nos permite colaborar en el Slack de LSST-DA.`,
+        "res.sc.openbadge": "Sin derechos de datos",
+        "res.sc.agn": `<a href="http://agn.science.lsst.org" target="_blank" rel="noopener"><b>AGN ↗</b></a> <span class="badge-open">Sin derechos de datos</span> <span class="what">— Núcleos Galácticos Activos.</span>`,
+        "res.sc.tvs": `<a href="http://lsst-tvssc.github.io" target="_blank" rel="noopener"><b>TVS ↗</b></a> <span class="badge-open">Sin derechos de datos</span> <span class="what">— Transitorios y Estrellas Variables.</span>`,
+        "res.sc.smwlv": `<a href="https://rubin-smwlv.github.io/" target="_blank" rel="noopener"><b>SMWLV ↗</b></a> <span class="badge-open">Sin derechos de datos</span> <span class="what">— Estrellas, Vía Láctea y Volumen Local; abierta a todo el mundo.</span>`,
+        "res.sc.issc": `<a href="http://issc.science.lsst.org" target="_blank" rel="noopener"><b>ISSC ↗</b></a> <span class="badge-open">Sin derechos de datos</span> <span class="what">— Informática y Estadística.</span>`,
+        "res.sc.galaxies": `<a href="https://sites.google.com/view/lsstgsc/home" target="_blank" rel="noopener"><b>Galaxias ↗</b></a> <span class="what">— formación y evolución de galaxias.</span>`,
+        "res.sc.sssc": `<a href="http://lsst-sssc.github.io" target="_blank" rel="noopener"><b>SSSC ↗</b></a> <span class="what">— Sistema Solar.</span>`,
+        "res.sc.slsc": `<a href="https://sites.google.com/view/lsst-stronglensing" target="_blank" rel="noopener"><b>SLSC ↗</b></a> <span class="what">— Lentes Gravitacionales Fuertes.</span>`,
+        "res.sc.desc": `<a href="http://lsst-desc.org" target="_blank" rel="noopener"><b>DESC ↗</b></a> <span class="what">— Energía Oscura.</span>`,
+        "res.sc.callout": `💬 <strong>Antes del taller:</strong> te animamos a unirte a una de las colaboraciones sin derechos de datos de arriba (AGN, TVS, SMWLV o ISSC). La membresía te da acceso al Slack de LSST-DA, donde coordinaremos los equipos y seguiremos colaborando después del evento.`,
+        "res.gloss.h": "Glosario de términos clave",
+        "res.gloss.sub": `Una referencia rápida de términos que escucharás durante el taller. Para la lista completa y oficial, consulta el <a href="https://www.lsst.org/scientists/glossary-acronyms" target="_blank" rel="noopener">Glosario y Acrónimos ↗</a> de Rubin/LSST (con búsqueda, en inglés y español) y el <a href="https://rubinobservatory.org/education/glossary" target="_blank" rel="noopener">glosario educativo ↗</a> más sencillo.`,
+        "res.gloss.rubin.t": "Observatorio Vera C. Rubin",
+        "res.gloss.rubin.d": "El observatorio de la NSF y el DOE en Chile que realiza el LSST — un telescopio de 8,4 m con una cámara de 3200 megapíxeles que fotografía todo el cielo austral cada pocas noches.",
+        "res.gloss.lsst.t": "LSST (Legacy Survey of Space and Time)",
+        "res.gloss.lsst.d": "El sondeo insignia de Rubin, de 10 años, que fotografía el cielo repetidamente para construir un mapa profundo del Universo resuelto en el tiempo.",
+        "res.gloss.lsstda.t": "LSST-DA (LSST Discovery Alliance)",
+        "res.gloss.lsstda.d": "La organización que impulsa la comunidad científica de LSST — alberga las Colaboraciones Científicas, LINCC Frameworks y el Slack de la comunidad.",
+        "res.gloss.lincc.t": "LINCC Frameworks",
+        "res.gloss.lincc.d": "Un programa de LSST-DA que desarrolla software de código abierto (LSDB/HATS, Hyrax, LightCurveLynx, RAIL, KBMOD, …) para la astronomía a la escala de LSST.",
+        "res.gloss.datarights.t": "Derechos sobre los datos (data rights)",
+        "res.gloss.datarights.d": "La autorización formal para acceder a los productos de datos propietarios (no públicos) de Rubin durante el sondeo. Se otorga a científicos de EE. UU. y Chile y a instituciones con contribuciones en especie.",
+        "res.gloss.nodatarights.t": "Sin derechos sobre los datos",
+        "res.gloss.nodatarights.d": "No tener acceso propietario. Este taller está diseñado precisamente para este caso: el flujo público de alertas y los productos de los brokers están abiertos a todo el mundo, sin necesidad de derechos sobre los datos.",
+        "res.gloss.public.t": "Datos públicos",
+        "res.gloss.public.d": "Productos de datos de Rubin disponibles para cualquier persona en el mundo — sobre todo el flujo de alertas y las clasificaciones de los brokers construidas sobre él.",
+        "res.gloss.dataproducts.t": "Productos de datos",
+        "res.gloss.dataproducts.d": "Los catálogos, imágenes y alertas que genera Rubin: productos Prompt (nocturnos, incluidas las alertas) y productos de Data Release (anuales, en su mayoría restringidos por derechos).",
+        "res.gloss.prompt.t": "Productos Prompt",
+        "res.gloss.prompt.d": "Productos generados en ~60 segundos tras cada observación, incluidas las imágenes de diferencia y las alertas que señalan cambios en el cielo.",
+        "res.gloss.alert.t": "Alerta",
+        "res.gloss.alert.d": "Un mensaje emitido cuando Rubin detecta un cambio (una fuente nueva, que se abrillanta, se atenúa o se mueve) en una imagen de diferencia. Incluye la medición y un breve historial.",
+        "res.gloss.alertpacket.t": "Paquete de alerta",
+        "res.gloss.alertpacket.d": "El registro de datos estructurado de una sola alerta — fotometría, posición, historial reciente de la curva de luz y recortes de imagen.",
+        "res.gloss.alertstream.t": "Flujo de alertas",
+        "res.gloss.alertstream.d": "El flujo continuo de paquetes de alerta (hasta ~10 millones por noche) que Rubin transmite públicamente a los brokers.",
+        "res.gloss.broker.t": "Broker",
+        "res.gloss.broker.d": "Software que recibe el flujo completo de alertas, lo enriquece (cruce de catálogos, características, clasificación con aprendizaje automático) y permite a los científicos filtrar y recuperar eventos — sin derechos sobre los datos.",
+        "res.gloss.sc.t": "Colaboración Científica (SC)",
+        "res.gloss.sc.d": "Una comunidad de científicos organizada en torno a un tema científico de LSST (p. ej. AGN, TVS). Varias aceptan miembros sin derechos sobre los datos.",
+        "res.gloss.dp.t": "DP1 / DP2 (Data Previews)",
+        "res.gloss.dp.d": "Primeras entregas de datos de Rubin usadas para preparar a la comunidad para las operaciones completas. Hay una versión HATS de DP2 para LSDB.",
+        "res.gloss.lightcurve.t": "Curva de luz",
+        "res.gloss.lightcurve.d": "El brillo de una fuente medido a lo largo del tiempo — el núcleo de la astronomía en el dominio temporal y de muchos análisis basados en alertas.",
+        "res.gloss.transient.t": "Transitorio",
+        "res.gloss.transient.d": "Un evento astronómico de corta duración que aparece y se desvanece — p. ej. supernovas, eventos de disrupción de marea, kilonovas.",
+        "res.gloss.variable.t": "Estrella variable",
+        "res.gloss.variable.d": "Una estrella cuyo brillo cambia con el tiempo; la búsqueda de períodos en sus curvas de luz apoya estudios de distancias y de poblaciones.",
+        "res.gloss.agn.t": "AGN (Núcleo Galáctico Activo)",
+        "res.gloss.agn.d": "El agujero negro supermasivo, luminoso y en acreción, en el centro de una galaxia; suele ser variable y puede identificarse en el flujo de alertas.",
+        "res.gloss.crossmatch.t": "Cruce de catálogos (cross-match)",
+        "res.gloss.crossmatch.d": "Asociar fuentes entre catálogos por su posición en el cielo (p. ej. emparejar alertas de Rubin con Gaia, ZTF o ATLAS). LSDB/HATS lo hacen eficiente a gran escala.",
+        "res.gloss.hats.t": "HATS / LSDB",
+        "res.gloss.hats.d": "HATS es un formato de catálogos particionado espacialmente; LSDB es el framework que analiza y cruza catálogos HATS en paralelo.",
+        "res.gloss.photoz.t": "Corrimiento al rojo fotométrico (photo-z)",
+        "res.gloss.photoz.d": "Una estimación del corrimiento al rojo (distancia) de una galaxia a partir de su brillo en varios filtros, en lugar de un espectro. Lo maneja RAIL.",
+        "res.gloss.mpc.t": "Minor Planet Center (MPC)",
+        "res.gloss.mpc.d": "El centro internacional de referencia para observaciones y órbitas de cuerpos menores del Sistema Solar, al que se reportan los descubrimientos de Rubin.",
         "agenda.h2": "Agenda preliminar",
         "agenda.lead": "Tres días completos en Medellín — contexto y sprints el Día 1, sprints intensivos y rutas hacia las Colaboraciones Científicas el Día 2, y un taller sobre la ruta hacia la publicación con presentación final el Día 3.",
         "agenda.day1h": "Día 1 — 13 oct.", "agenda.day1t": "Contexto + Sprint 1",
@@ -670,8 +967,9 @@
         "agenda.day3h": "Día 3 — 15 oct.", "agenda.day3t": "Sprint + presentación final",
         "ag.reg": "Registro + café", "ag.open": "Apertura, presentaciones, código de conducta",
         "ag.rubinov": "Datos públicos de Rubin + panorama de alertas", "ag.coffee": "Pausa para café",
-        "ag.broker": "Curso exprés de brokers", "ag.rotations": "Rotaciones por LINCC Frameworks",
-        "ag.lunch": "Almuerzo de trabajo", "ag.updates_retro": "Actualizaciones de equipos + retrospectiva",
+        "ag.broker": "Curso exprés de brokers", "ag.rotations": "Introducción a LINCC Frameworks",
+        "ag.lightning": "Charlas relámpago de participantes",
+        "ag.lunch": "Almuerzo", "ag.updates_retro": "Actualizaciones de equipos + retrospectiva",
         "ag.reception": "Recepción de bienvenida", "ag.standup": "Reunión rápida de equipos",
         "ag.scpanel": "Panel: rutas hacia las Colaboraciones Científicas de Rubin", "ag.sprint3cont": "Continúa el Sprint 3",
         "ag.updates": "Actualizaciones de equipos", "ag.dinner": "Cena grupal",
@@ -712,7 +1010,8 @@
       },
       pt: {
         "nav.about": "Sobre", "nav.topics": "Temas", "nav.agenda": "Agenda",
-        "nav.mentors": "Mentores", "nav.tools": "Dados e ferramentas", "nav.local": "Informações locais",
+        "nav.mentors": "Mentores", "nav.tools": "Dados e ferramentas",
+        "nav.resources": "Recursos", "nav.local": "Informações locais",
         "nav.participants": "Participantes", "nav.contact": "Contato", "nav.apply": "Inscreva-se",
         "hero.eyebrow": "Um workshop LATAM Hack Days",
         "hero.title": `<em>Open Tools, Open Sky:</em> Ciência com o LSST usando dados públicos do Rubin e o LINCC Frameworks`,
@@ -760,6 +1059,95 @@
         "tools.t5": `<b>Pacotes de alertas do Rubin</b> <span class="what">— o fluxo público de alertas, aberto a qualquer astrônomo(a).</span>`,
         "tools.t6": `<b>Levantamentos complementares</b> <span class="what">— Gaia, ZTF, ATLAS, Roman para cruzamento de catálogos.</span>`,
         "tools.note": "Antes do evento (T–2 semanas): um tutorial autoguiado de ~2 horas sobre LSDB/HATS, Hyrax e LightCurveLynx, além de uma breve reunião inicial por Zoom com o mentor de cada equipe para definir a pergunta científica e dividir as primeiras tarefas.",
+        "res.h2": "Recursos",
+        "res.lead": "Um ponto de partida selecionado para os participantes — os dados públicos e a documentação do Rubin, os brokers de alertas da comunidade, as ferramentas do LINCC Frameworks com seus tutoriais, as Colaborações Científicas do LSST às quais você pode se juntar (várias sem direitos sobre os dados) e um glossário de termos-chave. Recomendamos explorá-los antes do workshop.",
+        "res.rubin.h": "Rubin e LSST — páginas oficiais",
+        "res.rubin.sub": "O Observatório Vera C. Rubin realiza o Legacy Survey of Space and Time (LSST). Comece por aqui para conhecer o observatório, seus produtos de dados públicos e sua documentação.",
+        "res.rubin.l1": `<a href="https://rubinobservatory.org/" target="_blank" rel="noopener"><b>Observatório Rubin ↗</b></a> <span class="what">— site principal: missão, notícias e como o Rubin funciona.</span>`,
+        "res.rubin.l2": `<a href="https://rubinobservatory.org/for-scientists/data-products" target="_blank" rel="noopener"><b>Produtos de dados ↗</b></a> <span class="what">— visão geral dos produtos Prompt (alertas), dos produtos de Data Release e do acesso.</span>`,
+        "res.rubin.l3": `<a href="https://rubinobservatory.org/for-scientists/data-products/alerts-and-brokers" target="_blank" rel="noopener"><b>Alertas e brokers ↗</b></a> <span class="what">— o fluxo público de alertas e os brokers da comunidade que o servem.</span>`,
+        "res.rubin.l4": `<a href="https://rubinobservatory.org/explore/how-rubin-works/alerts" target="_blank" rel="noopener"><b>Como funcionam os alertas ↗</b></a> <span class="what">— o que é um alerta do Rubin e como o fluxo é produzido.</span>`,
+        "res.rubin.l5": `<a href="https://rubinobservatory.org/for-scientists/resources" target="_blank" rel="noopener"><b>Recursos para cientistas ↗</b></a> <span class="what">— tutoriais, a Rubin Science Platform e suporte da comunidade.</span>`,
+        "res.rubin.l6": `<a href="https://rubinobservatory.org/for-scientists/documentation" target="_blank" rel="noopener"><b>Documentação e publicações ↗</b></a> <span class="what">— notas técnicas e artigos do Rubin/LSST.</span>`,
+        "res.brokers.h": "Brokers de alertas",
+        "res.brokers.sub": "Os brokers recebem o fluxo público completo de alertas do Rubin, agregam valor (cruzamentos de catálogos, características, classificações com aprendizado de máquina) e permitem filtrar e recuperar eventos para a sua ciência. Não são necessários direitos sobre os dados do LSST para usá-los. Uma ótima visão geral e comparação lado a lado está na Broker Wiki da comunidade:",
+        "res.brokers.wiki": `<a href="https://errai34.github.io/rubin-broker-wiki" target="_blank" rel="noopener"><b>Rubin Broker Wiki ↗</b></a> <span class="what">— como escolher um broker para o seu caso científico, com uma comparação de características entre brokers.</span>`,
+        "res.brokers.alerce": `<a href="https://alerce.online/" target="_blank" rel="noopener"><b>ALeRCE ↗</b></a> <span class="what">— catálogo dinâmico e broker com curvas de luz cruzadas, anotadas e classificadas com aprendizado de máquina.</span>`,
+        "res.brokers.antares": `<a href="https://antares.noirlab.edu/" target="_blank" rel="noopener"><b>ANTARES ↗</b></a> <span class="what">— broker em tempo real do NOIRLab que adiciona contexto de catálogos multibanda e histórico de eventos.</span>`,
+        "res.brokers.ampel": `<a href="https://ampelproject.github.io/" target="_blank" rel="noopener"><b>AMPEL ↗</b></a> <span class="what">— plataforma modular para processamento de alertas em tempo real e offline com rastreabilidade explícita da procedência.</span>`,
+        "res.brokers.babamul": `<a href="https://docs.babamul.dev/" target="_blank" rel="noopener"><b>Babamul ↗</b></a> <span class="what">— broker leve e de código aberto que reestrutura o fluxo em canais menores e prontos para a ciência.</span>`,
+        "res.brokers.fink": `<a href="https://fink-broker.org/" target="_blank" rel="noopener"><b>Fink ↗</b></a> <span class="what">— broker comunitário com cruzamentos de catálogo/fluxo, engenharia de características e enriquecimento com aprendizado de máquina.</span>`,
+        "res.brokers.lasair": `<a href="https://lasair.lsst.ac.uk/" target="_blank" rel="noopener"><b>Lasair ↗</b></a> <span class="what">— broker do Reino Unido baseado em filtros SQL em tempo real, características de curvas de luz e cruzamento inteligente.</span>`,
+        "res.brokers.pittgoogle": `<a href="https://pitt-broker.readthedocs.io/" target="_blank" rel="noopener"><b>Pitt-Google ↗</b></a> <span class="what">— broker na nuvem e serviço de distribuição de dados para acesso público escalável aos alertas do LSST.</span>`,
+        "res.brokers.note": "Brokers derivados —como POI (curvas de luz de estrelas variáveis) e SNAPS (Sistema Solar)— são construídos sobre os fluxos acima; consulte a Broker Wiki para a lista completa de nove.",
+        "res.lincc.h": "Ferramentas do LINCC Frameworks",
+        "res.lincc.sub": `O LINCC Frameworks (um programa da LSST Discovery Alliance) desenvolve ferramentas de código aberto para análise na escala do LSST. Abaixo estão as ferramentas que usaremos, cada uma com documentação, tutoriais e seu canal de Slack da LSST-DA. Veja as <a href="https://lsstdiscoveryalliance.org/programs/lincc-frameworks/areas-focus/" target="_blank" rel="noopener">áreas de foco ↗</a> e a <a href="https://www.youtube.com/watch?v=zHpycfwU1fk" target="_blank" rel="noopener">palestra técnica de introdução ↗</a>.`,
+        "res.lincc.lsdb.p": "Análise espacial escalável. HATS (Hierarchical Adaptive Tiling System) é um formato de catálogos baseado em Parquet com particionamento espacial dinâmico; LSDB é um framework baseado em Dask, com interface tipo pandas, para análise e cruzamento distribuído e paralelo sobre grandes catálogos. Há uma versão HATS do Rubin DP2 em data.lsdb.io.",
+        "res.lincc.hyrax.p": "Um framework de baixo código para treinar e analisar modelos de aprendizado de máquina de forma reprodutível — obtenção de recortes, carregamento de dados, ajuste de hiperparâmetros, registro de modelos, inferência, busca por similaridade e detecção de anomalias, escalando do notebook à nuvem.",
+        "res.lincc.lcl.p": "Software de simulação no domínio do tempo, flexível e escalável, com efeitos realistas e estratégias de levantamento, integrando muitos pacotes de simulação existentes — por exemplo, para modelar uma população esperada (como supernovas do Tipo Ia) e estudar vieses de seleção em relação aos dados do Rubin.",
+        "res.lincc.rail.tag": "(photo-z, com DESC)",
+        "res.lincc.rail.p": "Redshift Assessment Infrastructure Layers — um conjunto modular de ferramentas para pipelines de desvio para o vermelho fotométrico na escala do Rubin: criação de fotometria simulada, estimativa por muitos algoritmos sob uma API comum e avaliação de métricas de desempenho.",
+        "res.lincc.more": `Também no ecossistema do LINCC Frameworks: <b>nested-pandas</b> (tabelas escaláveis de séries temporais), <b>KBMOD</b> (detecção de objetos em movimento / Sistema Solar) e a <a href="https://github.com/lincc-frameworks/python-project-template" target="_blank" rel="noopener">Python Project Template ↗</a> para pacotes reprodutíveis. Ajuda geral no Slack: #lincc-frameworks-qa · #lincc-tech-talks · #lincc-frameworks-dev`,
+        "res.sc.h": "Colaborações Científicas do LSST",
+        "res.sc.sub": `A <a href="https://lsstdiscoveryalliance.org/" target="_blank" rel="noopener">LSST Discovery Alliance (LSST-DA) ↗</a> apoia as oito <a href="https://lsstdiscoveryalliance.org/lsst-science-collaborations/" target="_blank" rel="noopener">Colaborações Científicas do LSST ↗</a> — comunidades organizadas em torno de temas científicos. É fundamental que <strong>várias são abertas para ingresso sem direitos sobre os dados do LSST</strong>. Juntar-se a uma antes do workshop nos permite colaborar no Slack da LSST-DA.`,
+        "res.sc.openbadge": "Sem direitos de dados",
+        "res.sc.agn": `<a href="http://agn.science.lsst.org" target="_blank" rel="noopener"><b>AGN ↗</b></a> <span class="badge-open">Sem direitos de dados</span> <span class="what">— Núcleos Galácticos Ativos.</span>`,
+        "res.sc.tvs": `<a href="http://lsst-tvssc.github.io" target="_blank" rel="noopener"><b>TVS ↗</b></a> <span class="badge-open">Sem direitos de dados</span> <span class="what">— Transientes e Estrelas Variáveis.</span>`,
+        "res.sc.smwlv": `<a href="https://rubin-smwlv.github.io/" target="_blank" rel="noopener"><b>SMWLV ↗</b></a> <span class="badge-open">Sem direitos de dados</span> <span class="what">— Estrelas, Via Láctea e Volume Local; aberta a todos.</span>`,
+        "res.sc.issc": `<a href="http://issc.science.lsst.org" target="_blank" rel="noopener"><b>ISSC ↗</b></a> <span class="badge-open">Sem direitos de dados</span> <span class="what">— Informática e Estatística.</span>`,
+        "res.sc.galaxies": `<a href="https://sites.google.com/view/lsstgsc/home" target="_blank" rel="noopener"><b>Galáxias ↗</b></a> <span class="what">— formação e evolução de galáxias.</span>`,
+        "res.sc.sssc": `<a href="http://lsst-sssc.github.io" target="_blank" rel="noopener"><b>SSSC ↗</b></a> <span class="what">— Sistema Solar.</span>`,
+        "res.sc.slsc": `<a href="https://sites.google.com/view/lsst-stronglensing" target="_blank" rel="noopener"><b>SLSC ↗</b></a> <span class="what">— Lentes Gravitacionais Fortes.</span>`,
+        "res.sc.desc": `<a href="http://lsst-desc.org" target="_blank" rel="noopener"><b>DESC ↗</b></a> <span class="what">— Energia Escura.</span>`,
+        "res.sc.callout": `💬 <strong>Antes do workshop:</strong> recomendamos que você se junte a uma das colaborações sem direitos de dados acima (AGN, TVS, SMWLV ou ISSC). A associação dá acesso ao Slack da LSST-DA, onde coordenaremos as equipes e continuaremos colaborando após o evento.`,
+        "res.gloss.h": "Glossário de termos-chave",
+        "res.gloss.sub": `Uma referência rápida de termos que você ouvirá durante o workshop. Para a lista completa e oficial, consulte o <a href="https://www.lsst.org/scientists/glossary-acronyms" target="_blank" rel="noopener">Glossário e Acrônimos ↗</a> do Rubin/LSST (pesquisável, em inglês e espanhol) e o <a href="https://rubinobservatory.org/education/glossary" target="_blank" rel="noopener">glossário educativo ↗</a> mais simples.`,
+        "res.gloss.rubin.t": "Observatório Vera C. Rubin",
+        "res.gloss.rubin.d": "O observatório da NSF e do DOE no Chile que realiza o LSST — um telescópio de 8,4 m com uma câmera de 3200 megapixels que fotografa todo o céu austral a cada poucas noites.",
+        "res.gloss.lsst.t": "LSST (Legacy Survey of Space and Time)",
+        "res.gloss.lsst.d": "O levantamento principal do Rubin, de 10 anos, que fotografa o céu repetidamente para construir um mapa profundo do Universo resolvido no tempo.",
+        "res.gloss.lsstda.t": "LSST-DA (LSST Discovery Alliance)",
+        "res.gloss.lsstda.d": "A organização que fomenta a comunidade científica do LSST — abriga as Colaborações Científicas, o LINCC Frameworks e o Slack da comunidade.",
+        "res.gloss.lincc.t": "LINCC Frameworks",
+        "res.gloss.lincc.d": "Um programa da LSST-DA que desenvolve software de código aberto (LSDB/HATS, Hyrax, LightCurveLynx, RAIL, KBMOD, …) para a astronomia na escala do LSST.",
+        "res.gloss.datarights.t": "Direitos sobre os dados (data rights)",
+        "res.gloss.datarights.d": "A autorização formal para acessar os produtos de dados proprietários (não públicos) do Rubin durante o levantamento. Concedida a cientistas dos EUA e do Chile e a instituições com contribuições em espécie.",
+        "res.gloss.nodatarights.t": "Sem direitos sobre os dados",
+        "res.gloss.nodatarights.d": "Não ter acesso proprietário. Este workshop foi desenhado exatamente para este caso: o fluxo público de alertas e os produtos dos brokers estão abertos a todos, sem necessidade de direitos sobre os dados.",
+        "res.gloss.public.t": "Dados públicos",
+        "res.gloss.public.d": "Produtos de dados do Rubin disponíveis para qualquer pessoa no mundo — sobretudo o fluxo de alertas e as classificações dos brokers construídas sobre ele.",
+        "res.gloss.dataproducts.t": "Produtos de dados",
+        "res.gloss.dataproducts.d": "Os catálogos, imagens e alertas que o Rubin gera: produtos Prompt (noturnos, incluindo os alertas) e produtos de Data Release (anuais, em sua maioria restritos por direitos).",
+        "res.gloss.prompt.t": "Produtos Prompt",
+        "res.gloss.prompt.d": "Produtos gerados em ~60 segundos após cada observação, incluindo as imagens de diferença e os alertas que sinalizam mudanças no céu.",
+        "res.gloss.alert.t": "Alerta",
+        "res.gloss.alert.d": "Uma mensagem emitida quando o Rubin detecta uma mudança (uma fonte nova, que se ilumina, se apaga ou se move) em uma imagem de diferença. Traz a medição e um breve histórico.",
+        "res.gloss.alertpacket.t": "Pacote de alerta",
+        "res.gloss.alertpacket.d": "O registro de dados estruturado de um único alerta — fotometria, posição, histórico recente da curva de luz e recortes de imagem.",
+        "res.gloss.alertstream.t": "Fluxo de alertas",
+        "res.gloss.alertstream.d": "O fluxo contínuo de pacotes de alerta (até ~10 milhões por noite) que o Rubin transmite publicamente aos brokers.",
+        "res.gloss.broker.t": "Broker",
+        "res.gloss.broker.d": "Software que recebe o fluxo completo de alertas, o enriquece (cruzamento de catálogos, características, classificação com aprendizado de máquina) e permite aos cientistas filtrar e recuperar eventos — sem direitos sobre os dados.",
+        "res.gloss.sc.t": "Colaboração Científica (SC)",
+        "res.gloss.sc.d": "Uma comunidade de cientistas organizada em torno de um tema científico do LSST (por exemplo, AGN, TVS). Várias aceitam membros sem direitos sobre os dados.",
+        "res.gloss.dp.t": "DP1 / DP2 (Data Previews)",
+        "res.gloss.dp.d": "Primeiras entregas de dados do Rubin usadas para preparar a comunidade para as operações completas. Há uma versão HATS do DP2 para o LSDB.",
+        "res.gloss.lightcurve.t": "Curva de luz",
+        "res.gloss.lightcurve.d": "O brilho de uma fonte medido ao longo do tempo — o núcleo da astronomia no domínio do tempo e de muitas análises baseadas em alertas.",
+        "res.gloss.transient.t": "Transiente",
+        "res.gloss.transient.d": "Um evento astronômico de curta duração que surge e se desvanece — por exemplo, supernovas, eventos de disrupção de maré, kilonovas.",
+        "res.gloss.variable.t": "Estrela variável",
+        "res.gloss.variable.d": "Uma estrela cujo brilho muda com o tempo; a busca de períodos em suas curvas de luz apoia estudos de distâncias e de populações.",
+        "res.gloss.agn.t": "AGN (Núcleo Galáctico Ativo)",
+        "res.gloss.agn.d": "O buraco negro supermassivo, luminoso e em acreção, no centro de uma galáxia; costuma ser variável e pode ser identificado no fluxo de alertas.",
+        "res.gloss.crossmatch.t": "Cruzamento de catálogos (cross-match)",
+        "res.gloss.crossmatch.d": "Associar fontes entre catálogos por sua posição no céu (por exemplo, casar alertas do Rubin com Gaia, ZTF ou ATLAS). LSDB/HATS tornam isso eficiente em grande escala.",
+        "res.gloss.hats.t": "HATS / LSDB",
+        "res.gloss.hats.d": "HATS é um formato de catálogos particionado espacialmente; LSDB é o framework que analisa e cruza catálogos HATS em paralelo.",
+        "res.gloss.photoz.t": "Desvio para o vermelho fotométrico (photo-z)",
+        "res.gloss.photoz.d": "Uma estimativa do desvio para o vermelho (distância) de uma galáxia a partir do seu brilho em vários filtros, em vez de um espectro. Tratado pelo RAIL.",
+        "res.gloss.mpc.t": "Minor Planet Center (MPC)",
+        "res.gloss.mpc.d": "O centro internacional de referência para observações e órbitas de corpos menores do Sistema Solar, ao qual as descobertas do Rubin são reportadas.",
         "agenda.h2": "Agenda preliminar",
         "agenda.lead": "Três dias completos em Medellín — contexto e sprints no Dia 1, sprints intensivos e caminhos para as Colaborações Científicas no Dia 2, e uma oficina sobre o caminho até a publicação com apresentação final no Dia 3.",
         "agenda.day1h": "Dia 1 — 13 out.", "agenda.day1t": "Contexto + Sprint 1",
@@ -767,8 +1155,9 @@
         "agenda.day3h": "Dia 3 — 15 out.", "agenda.day3t": "Sprint + apresentação final",
         "ag.reg": "Credenciamento + café", "ag.open": "Abertura, apresentações, código de conduta",
         "ag.rubinov": "Dados públicos do Rubin + panorama de alertas", "ag.coffee": "Intervalo para café",
-        "ag.broker": "Curso rápido de brokers", "ag.rotations": "Rodízios pelo LINCC Frameworks",
-        "ag.lunch": "Almoço de trabalho", "ag.updates_retro": "Atualizações das equipes + retrospectiva",
+        "ag.broker": "Curso rápido de brokers", "ag.rotations": "Introdução ao LINCC Frameworks",
+        "ag.lightning": "Palestras relâmpago dos participantes",
+        "ag.lunch": "Almoço", "ag.updates_retro": "Atualizações das equipes + retrospectiva",
         "ag.reception": "Recepção de boas-vindas", "ag.standup": "Reunião rápida das equipes",
         "ag.scpanel": "Painel: caminhos para as Colaborações Científicas do Rubin", "ag.sprint3cont": "Sprint 3 continua",
         "ag.updates": "Atualizações das equipes", "ag.dinner": "Jantar em grupo",
