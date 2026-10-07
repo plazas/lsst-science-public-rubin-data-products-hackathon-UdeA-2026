@@ -60,11 +60,6 @@
     .navlinks { display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: 0.9rem; }
     .navlinks a { text-decoration: none; color: var(--muted); }
     .navlinks a:hover { color: var(--rubin-teal); }
-    .navlinks a.nav-apply {
-      background: var(--rubin-teal); color: #fff; font-weight: 600;
-      padding: 4px 14px; border-radius: 5px;
-    }
-    .navlinks a.nav-apply:hover { background: var(--rubin-cyan); color: #062a31; }
 
     /* ---- Language switcher ---- */
     .langswitch { display: flex; gap: 4px; }
@@ -110,12 +105,6 @@
       color: #eafbfe; border-radius: 999px; padding: 5px 15px; font-weight: 500;
     }
     .hero .actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-    .hero .deadline {
-      margin: 20px 0 0; font-size: 0.98rem; color: #eafbfe;
-      background: rgba(63,198,216,0.14); border: 1px solid rgba(63,198,216,0.4);
-      border-radius: 6px; padding: 10px 16px; display: inline-block;
-    }
-    .hero .deadline strong { color: #fff; }
     .hero .credit {
       position: absolute; right: 12px; bottom: 8px;
       font-size: 0.68rem; color: rgba(255,255,255,0.6);
@@ -223,6 +212,39 @@
     .local-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 34px; align-items: center; }
     .local-grid img { width: 100%; height: auto; border-radius: 8px; box-shadow: 0 6px 18px rgba(0,0,0,0.10); display: block; }
     .local-grid .cap { font-size: 0.78rem; color: var(--faint); margin-top: 8px; }
+
+    /* ---- Participants (teams roster) ---- */
+    .teams {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+      gap: 20px 28px; margin: 18px 0 0;
+    }
+    .team { border-top: 2px solid var(--rubin-teal); padding-top: 9px; break-inside: avoid; }
+    .team h3 {
+      margin: 0 0 7px; font-size: 0.8rem; font-weight: 700; color: var(--rubin-teal);
+      text-transform: uppercase; letter-spacing: 0.05em; line-height: 1.35;
+    }
+    .team ul { list-style: none; margin: 0; padding: 0; }
+    .team li { padding: 4px 0; font-size: 0.87rem; line-height: 1.3; }
+    .team li .aff { display: block; color: var(--faint); font-size: 0.76rem; }
+
+    /* ---- Local info: collapsible practical details ---- */
+    .local-details {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 0 32px; margin-top: 26px;
+    }
+    .local-details details {
+      border-top: 1px solid var(--rule); padding: 0; break-inside: avoid;
+    }
+    .local-details summary {
+      cursor: pointer; padding: 10px 0; font-weight: 600; font-size: 0.95rem; list-style: none;
+    }
+    .local-details summary::-webkit-details-marker { display: none; }
+    .local-details summary::before { content: "+ "; color: var(--accent); font-weight: 700; }
+    .local-details details[open] > summary::before { content: "\2212 "; }
+    .local-details .body { padding: 0 0 12px; font-size: 0.89rem; }
+    .local-details .body p { margin: 0 0 8px; }
+    .local-details .body ul { margin: 0 0 8px; padding-left: 1.2em; }
+    .local-details .body li { margin: 0 0 5px; }
 
     /* ---- Participants ---- */
     .tbd {
@@ -332,7 +354,6 @@
           <a href="#local-info" data-i18n="nav.local">Local Info</a>
           <a href="#participants" data-i18n="nav.participants">Participants</a>
           <a href="#contact" data-i18n="nav.contact">Contact</a>
-          <a class="nav-apply" href="https://forms.gle/Gdva1KvnHhAp6hvz6" target="_blank" rel="noopener" data-i18n="nav.apply">Apply</a>
         </nav>
         <div class="langswitch" role="group" aria-label="Language / Idioma">
           <button type="button" data-lang="en" aria-label="English"><span class="flag">🇺🇸</span> EN</button>
@@ -356,11 +377,9 @@
           <span class="pill" data-i18n="hero.pilldate">🗓️ October 13–15, 2026 · 3 days, in person</span>
         </div>
         <div class="actions">
-          <a class="btn" href="https://forms.gle/Gdva1KvnHhAp6hvz6" target="_blank" rel="noopener" data-i18n="hero.btnapply">Apply now</a>
-          <a class="btn ghost" href="#about" data-i18n="hero.btnabout">About the event</a>
+          <a class="btn" href="#about" data-i18n="hero.btnabout">About the event</a>
           <a class="btn ghost" href="#mentors" data-i18n="hero.btnmentors">Mentors &amp; projects</a>
         </div>
-        <p class="deadline" data-i18n="hero.deadline">📌 Applications close <strong>September 8, 2026</strong> — accepted participants announced shortly after.</p>
       </div>
       <span class="credit" data-i18n="hero.credit">Illustration: NSF–DOE Vera C. Rubin Observatory</span>
     </div>
@@ -490,7 +509,7 @@
             <p class="date" data-i18n="agenda.day1t">Context + Sprint 1</p>
             <div class="slot"><span class="time">08:45</span><span class="desc" data-i18n="ag.reg">Registration + coffee</span></div>
             <div class="slot"><span class="time">09:00</span><span class="desc" data-i18n="ag.open">Opening, introductions, code of conduct</span></div>
-            <div class="slot hi"><span class="time">09:20</span><span class="desc" data-i18n="ag.rubinov">Rubin public data + alerts overview</span></div>
+            <div class="slot hi"><span class="time">09:20</span><span class="desc" data-i18n="ag.rubinov">1. Introduction to Rubin (<a href="https://docs.google.com/presentation/d/1fvuRkCaBeI_8Wkg_AvFBuFh-FZUEOyyN79V0NuPlWPA/edit?slide=id.g3f23d7cdc8f_0_263#slide=id.g3f23d7cdc8f_0_263" target="_blank" rel="noopener">slides ↗</a>) &nbsp;2. Prompt Products and Alerts Overview</span></div>
             <div class="slot brk"><span class="time">10:15</span><span class="desc" data-i18n="ag.coffee">Coffee break</span></div>
             <div class="slot"><span class="time">10:45</span><span class="desc" data-i18n="ag.broker">Broker crash course</span></div>
             <div class="slot"><span class="time">11:30</span><span class="desc" data-i18n="ag.rotations">LINCC Frameworks introduction</span></div>
@@ -560,7 +579,7 @@
           <p class="sub" data-i18n="res.brokers.sub">Brokers ingest Rubin's full public alert stream, add value (cross-matches, features, machine-learning classifications), and let you filter and retrieve events for your science. No LSST data rights are required to use them. A great overview and side-by-side comparison lives in the community Broker Wiki:</p>
           <ul class="linklist">
             <li data-i18n="res.brokers.wiki"><a href="https://errai34.github.io/rubin-broker-wiki" target="_blank" rel="noopener"><b>Rubin Broker Wiki ↗</b></a> <span class="what">— how to choose a broker for your science case, with a feature comparison across brokers.</span></li>
-            <li data-i18n="res.brokers.alerce"><a href="https://alerce.online/" target="_blank" rel="noopener"><b>ALeRCE ↗</b></a> <span class="what">— dynamic catalog and broker with cross-matched, annotated, machine-learning-classified light curves.</span></li>
+            <li data-i18n="res.brokers.alerce"><a href="https://science.alerce.online/" target="_blank" rel="noopener"><b>ALeRCE ↗</b></a> <span class="what">— dynamic catalog and broker with cross-matched, annotated, machine-learning-classified light curves.</span></li>
             <li data-i18n="res.brokers.antares"><a href="https://antares.noirlab.edu/" target="_blank" rel="noopener"><b>ANTARES ↗</b></a> <span class="what">— NOIRLab real-time broker adding context from multiwavelength catalogs and event history.</span></li>
             <li data-i18n="res.brokers.ampel"><a href="https://ampelproject.github.io/" target="_blank" rel="noopener"><b>AMPEL ↗</b></a> <span class="what">— modular platform for real-time and offline alert processing with explicit provenance tracking.</span></li>
             <li data-i18n="res.brokers.babamul"><a href="https://docs.babamul.dev/" target="_blank" rel="noopener"><b>Babamul ↗</b></a> <span class="what">— lightweight, open-source broker that restructures the stream into smaller science-ready channels.</span></li>
@@ -708,13 +727,84 @@
             <p data-i18n="local.p1">The workshop is hosted by <strong>Universidad de Antioquia</strong> in <strong>Medellín, Colombia</strong> — the "City of Eternal Spring," set in a green Andean valley with a mild climate year-round and an easy international gateway via José María Córdova International Airport (MDE).</p>
             <p data-i18n="local.p2">The event is fully in-person. Participants should bring a laptop; a UdeA computer room with desktops will be reserved as a backup for applicants without portable hardware.</p>
             <p data-i18n="local.p3">The workshop will be conducted primarily in English.</p>
-            <p data-i18n="local.address"><strong>Venue:</strong> The main campus of the Universidad de Antioquia is located at Calle 67 # 53-108, Medellín, Colombia. General information line: (+57) (604) 219 5000.</p>
-            <p class="note" data-i18n="local.note">Detailed venue, travel, and lodging information will be posted here as it is finalized.</p>
+            <p data-i18n="local.address"><strong>Venue:</strong> Universidad de Antioquia, <strong>Edificio de Extensión</strong>, fifth floor, Sala de Juntas. The building is not inside the main campus: it stands directly opposite the main entrance ("Portería de Ferrocarril"), at Calle 67 # 53-108, Medellín. <a href="https://maps.app.goo.gl/oWWRpRKUhnzNUR517" target="_blank" rel="noopener">See it on the map ↗</a>. General information line: (+57) (604) 219 5000.</p>
+            <p class="note" data-i18n="local.note">Practical details for travel, lodging and daily logistics are collected below.</p>
           </div>
           <div>
             <img src="figures_website/medellin.jpg" alt="Panoramic view of Medellín, Colombia, in its Andean valley">
             <p class="cap" data-i18n="local.cap">Medellín, Colombia — host city for the workshop.</p>
           </div>
+        </div>
+
+        <div class="local-details">
+
+          <details>
+            <summary data-i18n="local.d1h">✈️ Arriving in Medellín</summary>
+            <div class="body" data-i18n="local.d1">
+              <p>All flights arrive at <strong>José María Córdova International Airport (MDE)</strong>, a small airport located about one hour from Medellín. There are two ways to reach the city:</p>
+              <ul>
+                <li><strong>Bus.</strong> Buses leave from just outside the airport exit (look for the queue). The fare is about 20,000 COP and can be paid by card. The ride takes roughly 40 minutes and ends near the "Exposiciones" metro station, from where the <a href="https://www.metrodemedellin.gov.co/en/travel-with-us/maps" target="_blank" rel="noopener">Metro and Metroplús ↗</a> connect to both hotels.</li>
+                <li><strong>Taxi.</strong> Official taxis (white cars with a blue stripe) wait at the airport. The fare is about 100,000 COP and the ride ends in the San Diego area; from there take a second taxi, the Metro or the Metroplús to the hotel, or agree with the driver on a direct ride to the hotel for an additional charge.</li>
+              </ul>
+              <p>If you arrive after 8:00 pm, we recommend taking a taxi or Uber from the bus drop-off point (San Diego or Exposiciones) to your hotel.</p>
+            </div>
+          </details>
+
+          <details>
+            <summary data-i18n="local.d2h">🏨 Hotels</summary>
+            <div class="body" data-i18n="local.d2">
+              <p><strong>Hotel IBIS</strong> (mentors)<br>
+              Calle 20 #44-16, Medellín · (+57) (604) 590 3565 · <a href="mailto:ibis.medellin@accor.com">ibis.medellin@accor.com</a><br>
+              Near the "Industriales" metro station.</p>
+              <p><strong>Hotel MED La Palma</strong> (students)<br>
+              Calle 30 #80-3, Medellín · (+57) 300 285 5042<br>
+              Near the "La Palma" Metroplús station.</p>
+            </div>
+          </details>
+
+          <details>
+            <summary data-i18n="local.d3h">🚇 Getting to UdeA from the hotels</summary>
+            <div class="body" data-i18n="local.d3">
+              <ul>
+                <li><strong>From Hotel IBIS:</strong> walk about 10 minutes to Estación Industriales, take the Metro towards "Niquia" and get off at Estación Universidad after roughly 12 minutes. Cross Parque de los Deseos (100 m) to reach the entrance of Edificio de Extensión.</li>
+                <li><strong>From Hotel MED La Palma:</strong> cross the street, take the Metroplús towards "Aranjuez" and get off at Estación Universidad. Walk 400 m to the main entrance of UdeA; Edificio de Extensión is directly in front of it.</li>
+              </ul>
+              <p>Metro and Metroplús tickets cost about 4,500 COP per trip and are sold at almost every station. Both the public transport system and road traffic are heavily congested during rush hour (7:30–8:00 am and 5:00–6:00 pm), so allow extra time. Taxis and Uber are also available in the city.</p>
+              <p>On the first day, organizers will be waiting for participants at the entrance of the building.</p>
+            </div>
+          </details>
+
+          <details>
+            <summary data-i18n="local.d4h">💲 Currency and payments</summary>
+            <div class="body" data-i18n="local.d4">
+              <p>The local currency is the Colombian peso (COP). Cards are accepted in many places, but it is advisable to carry some cash. Changing money on arrival at the airport is a convenient option: about 50 USD gives roughly 150,000 COP, enough to reach the hotel and buy a coffee.</p>
+              <p>Taxis usually cannot be paid by card. Metro and Metroplús tickets can be paid by card at the stations.</p>
+            </div>
+          </details>
+
+          <details>
+            <summary data-i18n="local.d5h">🍽️ Lunch and coffee</summary>
+            <div class="body" data-i18n="local.d5">
+              <p>Lunch will be provided on all workshop days at <strong>Kaffe Kaldi</strong>, located at the entrance of the Planetarium, on the other side of Parque de los Deseos and about 100 m from Edificio de Extensión. A daily menu with several options is offered.</p>
+              <p>Coffee and tea will be served at the entrance of the room throughout the workshop.</p>
+            </div>
+          </details>
+
+          <details>
+            <summary data-i18n="local.d6h">⛅ Weather</summary>
+            <div class="body" data-i18n="local.d6">
+              <p>Temperatures in Medellín currently range from about 17 °C in the evening to 27 °C during the day. Warm days are expected during the workshop, with the possibility of occasional rain.</p>
+            </div>
+          </details>
+
+          <details>
+            <summary data-i18n="local.d7h">🦺 Safety and health</summary>
+            <div class="body" data-i18n="local.d7">
+              <p>Medellín is a welcoming city, but as in any large city visitors should take reasonable precautions: keep phones, cameras and wallets secure, avoid displaying valuables unnecessarily, and be particularly careful in crowded areas and at night.</p>
+              <p>Tap water in Medellín is safe to drink, and visitors are encouraged to carry a reusable water bottle.</p>
+            </div>
+          </details>
+
         </div>
       </div>
     </section>
@@ -723,18 +813,61 @@
     <section id="participants">
       <div class="wrap">
         <h2 data-i18n="part.h2">Participants</h2>
-        <div class="tbd">
-          <p data-i18n="part.lead">In selecting participants, we will prioritize, in order:</p>
-          <ol class="priority">
-            <li data-i18n="part.pri1">Researchers and students from LATAM countries without Rubin data rights;</li>
-            <li data-i18n="part.pri2">Researchers and students in LATAM countries that have groups with data rights, but who are not themselves on that data-rights list;</li>
-            <li data-i18n="part.pri3">Other participants from LATAM.</li>
-          </ol>
-          <p data-i18n="part.open">The workshop is open to both early-career researchers and senior participants, with the goal of building mid- and longer-term collaborations and cohort building.</p>
-          <p data-i18n="part.health">Each attendant must bring their own healthcare insurance during the stay in Medellín. This will be required by the organizers.</p>
-          <p style="margin:0;"><a class="btn" href="https://forms.gle/Gdva1KvnHhAp6hvz6" target="_blank" rel="noopener" data-i18n="part.btn">Apply now</a></p>
-          <p class="note" style="margin-top:14px;" data-i18n="part.note">Please apply by <strong>September 8, 2026</strong>. Accepted participants will be announced shortly after.</p>
+        <p class="lead" data-i18n="part.accepted">The 26 accepted participants come from ten countries and are organized into five mentor-led teams, each working on one of the projects listed under <a href="#mentors">Mentors &amp; Projects</a>. Teams are listed with their mentors below.</p>
+        <div class="teams">
+          <div class="team">
+            <h3 data-i18n="part.t1">Team 1 — Mentor: Alejandra Muñoz Arancibia</h3>
+            <ul>
+              <li>Maryory Loaiza Agudelo <span class="aff">Universidad de Antioquia, Colombia</span></li>
+              <li>Diego Fernando Fonseca Moreno <span class="aff">U. Nacional de Colombia / U. Antonio Nariño, Colombia</span></li>
+              <li>David Sebastián Rodríguez Numpaque <span class="aff">Universidad de Antioquia, Colombia</span></li>
+              <li>Sergio Andrés Sotovando Ramírez <span class="aff">Universidad del Valle de Guatemala, Guatemala</span></li>
+              <li>Marcos Alejandro Tello Sánchez <span class="aff">Universidad Autónoma de Chiriquí, Panamá</span></li>
+            </ul>
+          </div>
+          <div class="team">
+            <h3 data-i18n="part.t2">Team 2 — Mentors: Bolivia Cuevas-Otahola &amp; Tatiana Acero-Cuellar</h3>
+            <ul>
+              <li>Camilo Delgado-Correal <span class="aff">Universidad Distrital Francisco José de Caldas, Colombia</span></li>
+              <li>Carlos Mario García Álvarez <span class="aff">Universidad de Antioquia, Colombia</span></li>
+              <li>Luis Daniel Díaz Durango <span class="aff">Universidad de Antioquia, Colombia</span></li>
+              <li>Franchesca Mabel Del Orbe Acosta <span class="aff">U. Autónoma de Santo Domingo, Dominican Republic</span></li>
+              <li>Iván Gabriel Mafla Bolaños <span class="aff">U. Internacional de La Rioja, Spain / Ecuador</span></li>
+            </ul>
+          </div>
+          <div class="team">
+            <h3 data-i18n="part.t3">Team 3 — Mentor: Yijung Kang</h3>
+            <ul>
+              <li>Luz Ángela García <span class="aff">Universidad ECCI, Colombia</span></li>
+              <li>Juan Camilo Sánchez <span class="aff">Universidad Nacional de Colombia, Colombia</span></li>
+              <li>Alexandra Serrano Mendoza <span class="aff">Universidad Industrial de Santander, Colombia</span></li>
+              <li>Holman Daniel Quintero Salazar <span class="aff">Universidad de Guanajuato, Mexico</span></li>
+              <li>Simon Rodriguez <span class="aff">Universidad de Antioquia, Colombia</span></li>
+              <li>Juan Carlos Muñoz-Cuartas <span class="aff">Universidad de Antioquia, Colombia</span></li>
+            </ul>
+          </div>
+          <div class="team">
+            <h3 data-i18n="part.t4">Team 4 — Mentor: Bolivia Cuevas-Otahola</h3>
+            <ul>
+              <li>Verónica Arias Callejas <span class="aff">Universidad Nacional de Colombia, Colombia</span></li>
+              <li>Daniel Giovanny Vargas Wilches <span class="aff">Universidad Nacional de Colombia, Colombia</span></li>
+              <li>Nil Andy Armillon Huamán <span class="aff">Universidad Nacional de Ingeniería, Peru</span></li>
+              <li>Daniel Alfredo Rodríguez De Sousa <span class="aff">Universidad Central de Venezuela, Venezuela</span></li>
+              <li>Vanessa Piedrahita Castro <span class="aff">Universidad de Guanajuato, Mexico</span></li>
+            </ul>
+          </div>
+          <div class="team">
+            <h3 data-i18n="part.t5">Team 5 — Mentor: Pedro Bernardinelli</h3>
+            <ul>
+              <li>Jorge Iván Zuluaga Callejas <span class="aff">Universidad de Antioquia, Colombia</span></li>
+              <li>Juanita Andrea Agudelo <span class="aff">Universidad de Antioquia, Colombia</span></li>
+              <li>Angie Melissa Gutiérrez Estupiñán <span class="aff">Universidad Industrial de Santander, Colombia</span></li>
+              <li>Nicolás Pan <span class="aff">Universidad de la República, Uruguay</span></li>
+              <li>Valeria Judith Burgoa Camacho <span class="aff">Universidad Mayor de San Andrés, Bolivia</span></li>
+            </ul>
+          </div>
         </div>
+        <p class="note" style="margin-top:22px;" data-i18n="part.health">Each participant must have their own health insurance for the duration of their stay in Medellín. This is required by the organizers.</p>
       </div>
     </section>
 
@@ -824,13 +957,12 @@
         "nav.about": "Acerca de", "nav.topics": "Temas", "nav.agenda": "Agenda",
         "nav.mentors": "Mentores", "nav.tools": "Datos y herramientas",
         "nav.resources": "Recursos", "nav.local": "Información local",
-        "nav.participants": "Participantes", "nav.contact": "Contacto", "nav.apply": "Postular",
+        "nav.participants": "Participantes", "nav.contact": "Contacto",
         "hero.eyebrow": "Un taller LATAM Hack Days",
         "hero.title": `<em>Open Tools, Open Sky:</em> Ciencia con LSST usando datos públicos de Rubin y LINCC Frameworks`,
         "hero.subtitle": "Tres días para convertir el acceso abierto al flujo de alertas de Rubin en ciencia funcional basada en brokers.",
         "hero.pilldate": "🗓️ 13–15 de octubre de 2026 · 3 días, presencial",
-        "hero.btnapply": "Postular ahora", "hero.btnabout": "Sobre el evento", "hero.btnmentors": "Mentores y proyectos",
-        "hero.deadline": `📌 Las postulaciones cierran el <strong>8 de septiembre de 2026</strong> — los participantes seleccionados se anunciarán poco después.`,
+        "hero.btnabout": "Sobre el evento", "hero.btnmentors": "Mentores y proyectos",
         "hero.credit": "Ilustración: NSF–DOE Vera C. Rubin Observatory",
         "about.h2": "Acerca del evento",
         "about.lead": `El <a href="https://rubinobservatory.org/explore/how-rubin-works/alerts" target="_blank" rel="noopener">flujo de alertas</a> del Observatorio Rubin es el mayor producto de datos astronómicos públicos jamás publicado. Cada paquete de alerta, y cada clasificación de <a href="https://rubinobservatory.org/for-scientists/data-products/alerts-and-brokers" target="_blank" rel="noopener">broker</a>, está disponible para cualquier astrónomo/a — sin importar su estatus de derechos sobre los datos. Sin embargo, sin una incorporación estructurada y la orientación adecuada sobre las herramientas, ese acceso sigue siendo opaco para muchas personas investigadoras de América Latina.`,
@@ -884,7 +1016,7 @@
         "res.brokers.h": "Brokers de alertas",
         "res.brokers.sub": "Los brokers reciben el flujo público completo de alertas de Rubin, le agregan valor (cruces de catálogos, características, clasificaciones con aprendizaje automático) y te permiten filtrar y recuperar eventos para tu ciencia. No se requieren derechos sobre los datos de LSST para usarlos. Una excelente introducción y comparación lado a lado está en la Broker Wiki de la comunidad:",
         "res.brokers.wiki": `<a href="https://errai34.github.io/rubin-broker-wiki" target="_blank" rel="noopener"><b>Rubin Broker Wiki ↗</b></a> <span class="what">— cómo elegir un broker para tu caso científico, con una comparación de características entre brokers.</span>`,
-        "res.brokers.alerce": `<a href="https://alerce.online/" target="_blank" rel="noopener"><b>ALeRCE ↗</b></a> <span class="what">— catálogo dinámico y broker con curvas de luz cruzadas, anotadas y clasificadas con aprendizaje automático.</span>`,
+        "res.brokers.alerce": `<a href="https://science.alerce.online/" target="_blank" rel="noopener"><b>ALeRCE ↗</b></a> <span class="what">— catálogo dinámico y broker con curvas de luz cruzadas, anotadas y clasificadas con aprendizaje automático.</span>`,
         "res.brokers.antares": `<a href="https://antares.noirlab.edu/" target="_blank" rel="noopener"><b>ANTARES ↗</b></a> <span class="what">— broker en tiempo real de NOIRLab que añade contexto de catálogos multibanda e historial de eventos.</span>`,
         "res.brokers.ampel": `<a href="https://ampelproject.github.io/" target="_blank" rel="noopener"><b>AMPEL ↗</b></a> <span class="what">— plataforma modular para procesamiento de alertas en tiempo real y offline con trazabilidad explícita de la procedencia.</span>`,
         "res.brokers.babamul": `<a href="https://docs.babamul.dev/" target="_blank" rel="noopener"><b>Babamul ↗</b></a> <span class="what">— broker ligero y de código abierto que reestructura el flujo en canales más pequeños y listos para la ciencia.</span>`,
@@ -966,7 +1098,7 @@
         "agenda.day2h": "Día 2 — 14 oct.", "agenda.day2t": "Sprints + rutas a las SC",
         "agenda.day3h": "Día 3 — 15 oct.", "agenda.day3t": "Sprint + presentación final",
         "ag.reg": "Registro + café", "ag.open": "Apertura, presentaciones, código de conducta",
-        "ag.rubinov": "Datos públicos de Rubin + panorama de alertas", "ag.coffee": "Pausa para café",
+        "ag.rubinov": `1. Introducción a Rubin (<a href="https://docs.google.com/presentation/d/1fvuRkCaBeI_8Wkg_AvFBuFh-FZUEOyyN79V0NuPlWPA/edit?slide=id.g3f23d7cdc8f_0_263#slide=id.g3f23d7cdc8f_0_263" target="_blank" rel="noopener">diapositivas ↗</a>) &nbsp;2. Panorama de Prompt Products y alertas`, "ag.coffee": "Pausa para café",
         "ag.broker": "Curso exprés de brokers", "ag.rotations": "Introducción a LINCC Frameworks",
         "ag.lightning": "Charlas relámpago de participantes",
         "ag.lunch": "Almuerzo", "ag.updates_retro": "Actualizaciones de equipos + retrospectiva",
@@ -980,18 +1112,49 @@
         "local.p1": `El taller es organizado por la <strong>Universidad de Antioquia</strong> en <strong>Medellín, Colombia</strong> — la "Ciudad de la Eterna Primavera", ubicada en un verde valle andino con un clima templado todo el año y un cómodo acceso internacional a través del Aeropuerto Internacional José María Córdova (MDE).`,
         "local.p2": "El evento es totalmente presencial. Las personas participantes deben traer una laptop; se reservará una sala de cómputo de la UdeA con equipos de escritorio como respaldo para quienes no cuenten con equipo portátil.",
         "local.p3": "El taller se realizará principalmente en inglés.",
-        "local.address": `<strong>Sede:</strong> La sede principal de la Universidad de Antioquia está ubicada en la Calle 67 # 53-108, Medellín, Colombia. Línea de información general: (+57) (604) 219 5000.`,
-        "local.note": "La información detallada sobre la sede, viajes y alojamiento se publicará aquí a medida que se confirme.",
+        "local.address": `<strong>Sede:</strong> Universidad de Antioquia, <strong>Edificio de Extensión</strong>, quinto piso, Sala de Juntas. El edificio no está dentro del campus principal: se encuentra justo al frente de la entrada principal ("Portería de Ferrocarril"), en la Calle 67 # 53-108, Medellín. <a href="https://maps.app.goo.gl/oWWRpRKUhnzNUR517" target="_blank" rel="noopener">Verlo en el mapa ↗</a>. Línea de información general: (+57) (604) 219 5000.`,
+        "local.note": "A continuación se reúne la información práctica sobre viaje, alojamiento y logística diaria.",
         "local.cap": "Medellín, Colombia — ciudad anfitriona del taller.",
+        "local.d1h": "✈️ Llegada a Medellín",
+        "local.d1": `<p>Todos los vuelos llegan al <strong>Aeropuerto Internacional José María Córdova (MDE)</strong>, un aeropuerto pequeño ubicado a aproximadamente una hora de Medellín. Hay dos formas de llegar a la ciudad:</p>
+              <ul>
+                <li><strong>Bus.</strong> Los buses salen justo a la salida del aeropuerto (busca la fila). El pasaje cuesta alrededor de 20.000 COP y se puede pagar con tarjeta. El trayecto dura unos 40 minutos y termina cerca de la estación de metro "Exposiciones", desde donde el <a href="https://www.metrodemedellin.gov.co/en/travel-with-us/maps" target="_blank" rel="noopener">Metro y el Metroplús ↗</a> conectan con ambos hoteles.</li>
+                <li><strong>Taxi.</strong> En el aeropuerto hay taxis oficiales (carros blancos con una franja azul). La tarifa es de unos 100.000 COP y el recorrido termina en el sector de San Diego; desde allí se puede tomar otro taxi, el Metro o el Metroplús hasta el hotel, o acordar con el conductor un trayecto directo al hotel por un costo adicional.</li>
+              </ul>
+              <p>Si llegas después de las 8:00 p. m., recomendamos tomar un taxi o un Uber desde el punto de descenso del bus (San Diego o Exposiciones) hasta el hotel.</p>`,
+        "local.d2h": "🏨 Hoteles",
+        "local.d2": `<p><strong>Hotel IBIS</strong> (mentores)<br>
+              Calle 20 #44-16, Medellín · (+57) (604) 590 3565 · <a href="mailto:ibis.medellin@accor.com">ibis.medellin@accor.com</a><br>
+              Cerca de la estación de metro "Industriales".</p>
+              <p><strong>Hotel MED La Palma</strong> (estudiantes)<br>
+              Calle 30 #80-3, Medellín · (+57) 300 285 5042<br>
+              Cerca de la estación de Metroplús "La Palma".</p>`,
+        "local.d3h": "🚇 Cómo llegar a la UdeA desde los hoteles",
+        "local.d3": `<ul>
+                <li><strong>Desde el Hotel IBIS:</strong> camina unos 10 minutos hasta la Estación Industriales, toma el Metro en dirección a "Niquia" y baja en la Estación Universidad después de unos 12 minutos. Cruza el Parque de los Deseos (100 m) hasta la entrada del Edificio de Extensión.</li>
+                <li><strong>Desde el Hotel MED La Palma:</strong> cruza la calle, toma el Metroplús en dirección a "Aranjuez" y baja en la Estación Universidad. Camina 400 m hasta la entrada principal de la UdeA; el Edificio de Extensión está justo al frente.</li>
+              </ul>
+              <p>Los tiquetes del Metro y del Metroplús cuestan alrededor de 4.500 COP por trayecto y se venden en casi todas las estaciones. Tanto el transporte público como el tráfico vehicular están muy congestionados en hora pico (7:30–8:00 a. m. y 5:00–6:00 p. m.), así que conviene salir con tiempo. En la ciudad también hay taxis y Uber.</p>
+              <p>El primer día, la organización estará esperando a las personas participantes en la entrada del edificio.</p>`,
+        "local.d4h": "💲 Moneda y pagos",
+        "local.d4": `<p>La moneda local es el peso colombiano (COP). En muchos lugares se acepta tarjeta, pero es recomendable llevar algo de efectivo. Cambiar dinero al llegar al aeropuerto es una opción práctica: unos 50 USD equivalen a cerca de 150.000 COP, suficiente para llegar al hotel y tomar un café.</p>
+              <p>Por lo general los taxis no se pueden pagar con tarjeta. Los tiquetes del Metro y del Metroplús sí se pueden pagar con tarjeta en las estaciones.</p>`,
+        "local.d5h": "🍽️ Almuerzo y café",
+        "local.d5": `<p>Se ofrecerá almuerzo todos los días del taller en <strong>Kaffe Kaldi</strong>, ubicado en la entrada del Planetario, al otro lado del Parque de los Deseos y a unos 100 m del Edificio de Extensión. Hay un menú del día con varias opciones.</p>
+              <p>Durante el taller se servirá café y té en la entrada de la sala.</p>`,
+        "local.d6h": "⛅ Clima",
+        "local.d6": `<p>Actualmente las temperaturas en Medellín van de unos 17 °C en la noche a 27 °C durante el día. Se esperan días cálidos durante el taller, con posibilidad de lluvias ocasionales.</p>`,
+        "local.d7h": "🦺 Seguridad y salud",
+        "local.d7": `<p>Medellín es una ciudad acogedora, pero como en cualquier ciudad grande conviene tomar precauciones razonables: mantener celulares, cámaras y billeteras seguros, evitar exhibir objetos de valor innecesariamente y prestar especial atención en lugares concurridos y durante la noche.</p>
+              <p>El agua del grifo en Medellín es potable; se recomienda llevar una botella reutilizable.</p>`,
         "part.h2": "Participantes",
-        "part.lead": "Para seleccionar a las personas participantes, priorizaremos, en este orden:",
-        "part.pri1": "Investigadores/as y estudiantes de países de LATAM sin derechos sobre los datos de Rubin;",
-        "part.pri2": "Investigadores/as y estudiantes en países de LATAM que tienen grupos con derechos sobre los datos, pero que no figuran en esa lista de derechos;",
-        "part.pri3": "Otras personas participantes de LATAM.",
-        "part.open": "El taller está abierto tanto a investigadores/as en etapa temprana como a participantes senior, con el objetivo de construir colaboraciones de mediano y largo plazo y de formar cohorte.",
+        "part.accepted": `Las 26 personas aceptadas provienen de diez países y están organizadas en cinco equipos liderados por mentores, cada uno trabajando en uno de los proyectos listados en <a href="#mentors">Mentores y proyectos</a>. A continuación se presentan los equipos con sus mentores.`,
+        "part.t1": "Equipo 1 — Mentora: Alejandra Muñoz Arancibia",
+        "part.t2": "Equipo 2 — Mentoras: Bolivia Cuevas-Otahola y Tatiana Acero-Cuellar",
+        "part.t3": "Equipo 3 — Mentora: Yijung Kang",
+        "part.t4": "Equipo 4 — Mentora: Bolivia Cuevas-Otahola",
+        "part.t5": "Equipo 5 — Mentor: Pedro Bernardinelli",
         "part.health": "Cada participante debe contar con su propio seguro médico durante la estadía en Medellín. Esto será requerido por la organización.",
-        "part.btn": "Postular ahora",
-        "part.note": `Postula antes del <strong>8 de septiembre de 2026</strong>. Los participantes seleccionados se anunciarán poco después.`,
         "org.h2": "Organización",
         "org.pi": `<strong>Investigador Principal:</strong> Andrés A. Plazas Malagón (SLAC National Accelerator Laboratory / KIPAC / Stanford University / Vera C. Rubin Observatory).`,
         "org.coi": "Co-investigadores/as",
@@ -1012,13 +1175,12 @@
         "nav.about": "Sobre", "nav.topics": "Temas", "nav.agenda": "Agenda",
         "nav.mentors": "Mentores", "nav.tools": "Dados e ferramentas",
         "nav.resources": "Recursos", "nav.local": "Informações locais",
-        "nav.participants": "Participantes", "nav.contact": "Contato", "nav.apply": "Inscreva-se",
+        "nav.participants": "Participantes", "nav.contact": "Contato",
         "hero.eyebrow": "Um workshop LATAM Hack Days",
         "hero.title": `<em>Open Tools, Open Sky:</em> Ciência com o LSST usando dados públicos do Rubin e o LINCC Frameworks`,
         "hero.subtitle": "Três dias para transformar o acesso aberto ao fluxo de alertas do Rubin em ciência funcional baseada em brokers.",
         "hero.pilldate": "🗓️ 13–15 de outubro de 2026 · 3 dias, presencial",
-        "hero.btnapply": "Inscreva-se agora", "hero.btnabout": "Sobre o evento", "hero.btnmentors": "Mentores e projetos",
-        "hero.deadline": `📌 As inscrições encerram em <strong>8 de setembro de 2026</strong> — os participantes selecionados serão anunciados logo depois.`,
+        "hero.btnabout": "Sobre o evento", "hero.btnmentors": "Mentores e projetos",
         "hero.credit": "Ilustração: NSF–DOE Vera C. Rubin Observatory",
         "about.h2": "Sobre o evento",
         "about.lead": `O <a href="https://rubinobservatory.org/explore/how-rubin-works/alerts" target="_blank" rel="noopener">fluxo de alertas</a> do Observatório Rubin é o maior produto de dados astronômicos públicos já divulgado. Cada pacote de alerta, e cada classificação de <a href="https://rubinobservatory.org/for-scientists/data-products/alerts-and-brokers" target="_blank" rel="noopener">broker</a>, está disponível para qualquer astrônomo(a) — independentemente do status de direitos sobre os dados. Ainda assim, sem uma integração estruturada e a orientação adequada sobre as ferramentas, esse acesso permanece opaco para muitos pesquisadores da América Latina.`,
@@ -1072,7 +1234,7 @@
         "res.brokers.h": "Brokers de alertas",
         "res.brokers.sub": "Os brokers recebem o fluxo público completo de alertas do Rubin, agregam valor (cruzamentos de catálogos, características, classificações com aprendizado de máquina) e permitem filtrar e recuperar eventos para a sua ciência. Não são necessários direitos sobre os dados do LSST para usá-los. Uma ótima visão geral e comparação lado a lado está na Broker Wiki da comunidade:",
         "res.brokers.wiki": `<a href="https://errai34.github.io/rubin-broker-wiki" target="_blank" rel="noopener"><b>Rubin Broker Wiki ↗</b></a> <span class="what">— como escolher um broker para o seu caso científico, com uma comparação de características entre brokers.</span>`,
-        "res.brokers.alerce": `<a href="https://alerce.online/" target="_blank" rel="noopener"><b>ALeRCE ↗</b></a> <span class="what">— catálogo dinâmico e broker com curvas de luz cruzadas, anotadas e classificadas com aprendizado de máquina.</span>`,
+        "res.brokers.alerce": `<a href="https://science.alerce.online/" target="_blank" rel="noopener"><b>ALeRCE ↗</b></a> <span class="what">— catálogo dinâmico e broker com curvas de luz cruzadas, anotadas e classificadas com aprendizado de máquina.</span>`,
         "res.brokers.antares": `<a href="https://antares.noirlab.edu/" target="_blank" rel="noopener"><b>ANTARES ↗</b></a> <span class="what">— broker em tempo real do NOIRLab que adiciona contexto de catálogos multibanda e histórico de eventos.</span>`,
         "res.brokers.ampel": `<a href="https://ampelproject.github.io/" target="_blank" rel="noopener"><b>AMPEL ↗</b></a> <span class="what">— plataforma modular para processamento de alertas em tempo real e offline com rastreabilidade explícita da procedência.</span>`,
         "res.brokers.babamul": `<a href="https://docs.babamul.dev/" target="_blank" rel="noopener"><b>Babamul ↗</b></a> <span class="what">— broker leve e de código aberto que reestrutura o fluxo em canais menores e prontos para a ciência.</span>`,
@@ -1154,7 +1316,7 @@
         "agenda.day2h": "Dia 2 — 14 out.", "agenda.day2t": "Sprints + caminhos às SC",
         "agenda.day3h": "Dia 3 — 15 out.", "agenda.day3t": "Sprint + apresentação final",
         "ag.reg": "Credenciamento + café", "ag.open": "Abertura, apresentações, código de conduta",
-        "ag.rubinov": "Dados públicos do Rubin + panorama de alertas", "ag.coffee": "Intervalo para café",
+        "ag.rubinov": `1. Introdução ao Rubin (<a href="https://docs.google.com/presentation/d/1fvuRkCaBeI_8Wkg_AvFBuFh-FZUEOyyN79V0NuPlWPA/edit?slide=id.g3f23d7cdc8f_0_263#slide=id.g3f23d7cdc8f_0_263" target="_blank" rel="noopener">slides ↗</a>) &nbsp;2. Panorama dos Prompt Products e dos alertas`, "ag.coffee": "Intervalo para café",
         "ag.broker": "Curso rápido de brokers", "ag.rotations": "Introdução ao LINCC Frameworks",
         "ag.lightning": "Palestras relâmpago dos participantes",
         "ag.lunch": "Almoço", "ag.updates_retro": "Atualizações das equipes + retrospectiva",
@@ -1168,18 +1330,49 @@
         "local.p1": `O workshop é organizado pela <strong>Universidad de Antioquia</strong> em <strong>Medellín, Colômbia</strong> — a "Cidade da Eterna Primavera", situada em um verde vale andino, com clima ameno o ano todo e fácil acesso internacional pelo Aeroporto Internacional José María Córdova (MDE).`,
         "local.p2": "O evento é totalmente presencial. Os participantes devem trazer um notebook; uma sala de computadores da UdeA com desktops será reservada como alternativa para quem não tiver equipamento portátil.",
         "local.p3": "O workshop será conduzido principalmente em inglês.",
-        "local.address": `<strong>Local:</strong> O campus principal da Universidad de Antioquia fica na Calle 67 # 53-108, Medellín, Colômbia. Linha de informações gerais: (+57) (604) 219 5000.`,
-        "local.note": "Informações detalhadas sobre o local, viagem e hospedagem serão publicadas aqui à medida que forem confirmadas.",
+        "local.address": `<strong>Local:</strong> Universidad de Antioquia, <strong>Edificio de Extensión</strong>, quinto andar, Sala de Juntas. O prédio não fica dentro do campus principal: está logo em frente à entrada principal ("Portería de Ferrocarril"), na Calle 67 # 53-108, Medellín. <a href="https://maps.app.goo.gl/oWWRpRKUhnzNUR517" target="_blank" rel="noopener">Ver no mapa ↗</a>. Linha de informações gerais: (+57) (604) 219 5000.`,
+        "local.note": "As informações práticas sobre viagem, hospedagem e logística diária estão reunidas abaixo.",
         "local.cap": "Medellín, Colômbia — cidade-sede do workshop.",
+        "local.d1h": "✈️ Chegada a Medellín",
+        "local.d1": `<p>Todos os voos chegam ao <strong>Aeroporto Internacional José María Córdova (MDE)</strong>, um aeroporto pequeno localizado a cerca de uma hora de Medellín. Há duas formas de chegar à cidade:</p>
+              <ul>
+                <li><strong>Ônibus.</strong> Os ônibus saem logo na saída do aeroporto (procure a fila). A passagem custa cerca de 20.000 COP e pode ser paga com cartão. O trajeto leva cerca de 40 minutos e termina perto da estação de metrô "Exposiciones", de onde o <a href="https://www.metrodemedellin.gov.co/en/travel-with-us/maps" target="_blank" rel="noopener">Metrô e o Metroplús ↗</a> conectam aos dois hotéis.</li>
+                <li><strong>Táxi.</strong> No aeroporto há táxis oficiais (carros brancos com uma faixa azul). A corrida custa cerca de 100.000 COP e termina na região de San Diego; de lá é possível pegar outro táxi, o Metrô ou o Metroplús até o hotel, ou combinar com o motorista uma corrida direta até o hotel por um valor adicional.</li>
+              </ul>
+              <p>Se você chegar depois das 20h, recomendamos pegar um táxi ou Uber do ponto de desembarque do ônibus (San Diego ou Exposiciones) até o hotel.</p>`,
+        "local.d2h": "🏨 Hotéis",
+        "local.d2": `<p><strong>Hotel IBIS</strong> (mentores)<br>
+              Calle 20 #44-16, Medellín · (+57) (604) 590 3565 · <a href="mailto:ibis.medellin@accor.com">ibis.medellin@accor.com</a><br>
+              Perto da estação de metrô "Industriales".</p>
+              <p><strong>Hotel MED La Palma</strong> (estudantes)<br>
+              Calle 30 #80-3, Medellín · (+57) 300 285 5042<br>
+              Perto da estação de Metroplús "La Palma".</p>`,
+        "local.d3h": "🚇 Como chegar à UdeA a partir dos hotéis",
+        "local.d3": `<ul>
+                <li><strong>Do Hotel IBIS:</strong> caminhe cerca de 10 minutos até a Estación Industriales, pegue o Metrô no sentido "Niquia" e desça na Estación Universidad após cerca de 12 minutos. Atravesse o Parque de los Deseos (100 m) até a entrada do Edificio de Extensión.</li>
+                <li><strong>Do Hotel MED La Palma:</strong> atravesse a rua, pegue o Metroplús no sentido "Aranjuez" e desça na Estación Universidad. Caminhe 400 m até a entrada principal da UdeA; o Edificio de Extensión fica bem em frente.</li>
+              </ul>
+              <p>As passagens do Metrô e do Metroplús custam cerca de 4.500 COP por trajeto e são vendidas em quase todas as estações. Tanto o transporte público quanto o trânsito ficam bastante congestionados no horário de pico (7h30–8h e 17h–18h), por isso saia com antecedência. Táxis e Uber também estão disponíveis na cidade.</p>
+              <p>No primeiro dia, a organização estará esperando os participantes na entrada do prédio.</p>`,
+        "local.d4h": "💲 Moeda e pagamentos",
+        "local.d4": `<p>A moeda local é o peso colombiano (COP). Cartões são aceitos em muitos lugares, mas é prudente levar algum dinheiro em espécie. Trocar dinheiro na chegada ao aeroporto é uma opção prática: cerca de 50 USD equivalem a aproximadamente 150.000 COP, o suficiente para chegar ao hotel e tomar um café.</p>
+              <p>Em geral, os táxis não aceitam cartão. As passagens do Metrô e do Metroplús podem ser pagas com cartão nas estações.</p>`,
+        "local.d5h": "🍽️ Almoço e café",
+        "local.d5": `<p>O almoço será oferecido em todos os dias do workshop no <strong>Kaffe Kaldi</strong>, na entrada do Planetário, do outro lado do Parque de los Deseos e a cerca de 100 m do Edificio de Extensión. Há um menu do dia com várias opções.</p>
+              <p>Café e chá serão servidos na entrada da sala durante o workshop.</p>`,
+        "local.d6h": "⛅ Clima",
+        "local.d6": `<p>Atualmente as temperaturas em Medellín variam de cerca de 17 °C à noite a 27 °C durante o dia. Espera-se dias quentes durante o workshop, com possibilidade de chuvas ocasionais.</p>`,
+        "local.d7h": "🦺 Segurança e saúde",
+        "local.d7": `<p>Medellín é uma cidade acolhedora, mas, como em qualquer cidade grande, convém tomar precauções razoáveis: manter celulares, câmeras e carteiras em segurança, evitar exibir objetos de valor desnecessariamente e ter atenção especial em locais movimentados e à noite.</p>
+              <p>A água da torneira em Medellín é potável; recomenda-se levar uma garrafa reutilizável.</p>`,
         "part.h2": "Participantes",
-        "part.lead": "Na seleção dos participantes, vamos priorizar, nesta ordem:",
-        "part.pri1": "Pesquisadores e estudantes de países da LATAM sem direitos sobre os dados do Rubin;",
-        "part.pri2": "Pesquisadores e estudantes em países da LATAM que possuem grupos com direitos sobre os dados, mas que não estão nessa lista de direitos;",
-        "part.pri3": "Outros participantes da LATAM.",
-        "part.open": "O workshop é aberto tanto a pesquisadores em início de carreira quanto a participantes seniores, com o objetivo de construir colaborações de médio e longo prazo e de formar uma coorte.",
+        "part.accepted": `Os 26 participantes aceitos vêm de dez países e estão organizados em cinco equipes lideradas por mentores, cada uma trabalhando em um dos projetos listados em <a href="#mentors">Mentores e projetos</a>. As equipes são apresentadas abaixo com seus mentores.`,
+        "part.t1": "Equipe 1 — Mentora: Alejandra Muñoz Arancibia",
+        "part.t2": "Equipe 2 — Mentoras: Bolivia Cuevas-Otahola e Tatiana Acero-Cuellar",
+        "part.t3": "Equipe 3 — Mentora: Yijung Kang",
+        "part.t4": "Equipe 4 — Mentora: Bolivia Cuevas-Otahola",
+        "part.t5": "Equipe 5 — Mentor: Pedro Bernardinelli",
         "part.health": "Cada participante deve trazer seu próprio seguro de saúde durante a estadia em Medellín. Isso será exigido pela organização.",
-        "part.btn": "Inscreva-se agora",
-        "part.note": `Inscreva-se até <strong>8 de setembro de 2026</strong>. Os participantes selecionados serão anunciados logo depois.`,
         "org.h2": "Organização",
         "org.pi": `<strong>Pesquisador Principal:</strong> Andrés A. Plazas Malagón (SLAC National Accelerator Laboratory / KIPAC / Stanford University / Vera C. Rubin Observatory).`,
         "org.coi": "Coinvestigadores",
