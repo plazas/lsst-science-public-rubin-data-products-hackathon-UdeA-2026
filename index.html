@@ -180,6 +180,10 @@
     .mentor ul { margin: 8px 0 0; padding-left: 1.15em; }
     .mentor li { margin: 0 0 6px; font-size: 0.95rem; color: var(--faint); }
     .mentor li:last-child { margin-bottom: 0; }
+    .mentor li .co { display: block; font-size: 0.86rem; }
+    .mentor .repos { margin: 10px 0 0; font-size: 0.82rem; color: var(--faint); line-height: 1.5; }
+    .mentor .repos .lbl { display: block; font-weight: 600; color: var(--ink); }
+    .mentor .repos a { word-break: break-word; }
 
     /* ---- Tools list ---- */
     .tools { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0 34px; }
@@ -456,25 +460,37 @@
             <ul>
               <li data-i18n="mentors.pbern">Exploring Rubin Solar System discoveries in the Minor Planet Center.</li>
             </ul>
+            <p class="repos"><span class="lbl" data-i18n="mentors.repo">Team repository:</span>
+              <a href="https://github.com/bernardinelli/medellin_workshop_solarsystem" target="_blank" rel="noopener">bernardinelli/medellin_workshop_solarsystem ↗</a>
+            </p>
           </div>
           <div class="mentor">
             <p class="name"><a href="https://orcid.org/0000-0002-1046-1500" target="_blank" rel="noopener">Bolivia Cuevas-Otahola ↗</a> <span class="role" data-i18n="mentors.role">Mentor</span></p>
             <ul>
               <li data-i18n="mentors.pcuevas1">Mapping the Nearby Universe: distance determination with variable stars in the Rubin alert stream.</li>
-              <li data-i18n="mentors.pcuevas2">Discovering the Unexpected: anomaly detection in Rubin alert streams.</li>
+              <li><span data-i18n="mentors.pcuevas2">Discovering the Unexpected: anomaly detection in Rubin alert streams.</span> <span class="co"><span data-i18n="mentors.cowith">Co-mentored with</span> <a href="https://taceroc.github.io/" target="_blank" rel="noopener">Tatiana Acero-Cuellar ↗</a></span></li>
             </ul>
+            <p class="repos"><span class="lbl" data-i18n="mentors.repos">Team repositories:</span>
+              <a href="https://github.com/taceroc/LATAM_Hackathon_AnomalyDetection_2026" target="_blank" rel="noopener">taceroc/LATAM_Hackathon_AnomalyDetection_2026 ↗</a><br>              <a href="https://github.com/umbramortem/open_tools_open_sky_LSST_2026" target="_blank" rel="noopener">umbramortem/open_tools_open_sky_LSST_2026 ↗</a>
+            </p>
           </div>
           <div class="mentor">
             <p class="name"><a href="https://kipac.stanford.edu/people/yijung-kang" target="_blank" rel="noopener">Yijung Kang ↗</a> <span class="role" data-i18n="mentors.role">Mentor</span></p>
             <ul>
               <li data-i18n="mentors.pkang">Matching host galaxies of SNe Ia using LSST alerts and archival catalog data.</li>
             </ul>
+            <p class="repos"><span class="lbl" data-i18n="mentors.repo">Team repository:</span>
+              <a href="https://github.com/ykangastro/Team3_SNe_Host_Matching" target="_blank" rel="noopener">ykangastro/Team3_SNe_Host_Matching ↗</a>
+            </p>
           </div>
           <div class="mentor">
             <p class="name"><a href="https://rubinobservatory.org/explore/staff/alejandra-munoz-arancibia" target="_blank" rel="noopener">Alejandra Muñoz Arancibia ↗</a> <span class="role" data-i18n="mentors.role">Mentor</span></p>
             <ul>
               <li data-i18n="mentors.parancibia">Characterizing transients, AGN and variable stars in Rubin alerts using the ALeRCE broker.</li>
             </ul>
+            <p class="repos"><span class="lbl" data-i18n="mentors.repo">Team repository:</span>
+              <a href="https://github.com/ale-munozarancibia/LSST_Hackdays_Medellin_Team1_Characterizing_DIAObjects" target="_blank" rel="noopener">ale-munozarancibia/LSST_Hackdays_Medellin_Team1_Characterizing_DIAObjects ↗</a>
+            </p>
           </div>
         </div>
       </div>
@@ -501,7 +517,7 @@
     <section id="agenda">
       <div class="wrap">
         <h2 data-i18n="agenda.h2">Draft Agenda</h2>
-        <p class="lead" data-i18n="agenda.lead">Three full days in Medellín — context and sprints on Day 1, deep sprints and Science Collaboration pathways on Day 2, and a publication-pathway workshop with show-and-tell on Day 3.</p>
+        <p class="lead" data-i18n="agenda.lead">Three full days in Medellín — context and a first sprint on Day 1, deep sprints on Day 2, and a final sprint with show-and-tell on Day 3.</p>
         <div class="agenda-grid">
 
           <div class="day">
@@ -522,12 +538,11 @@
 
           <div class="day">
             <h3 data-i18n="agenda.day2h">Day 2 — Oct. 14</h3>
-            <p class="date" data-i18n="agenda.day2t">Sprints + SC Pathways</p>
+            <p class="date" data-i18n="agenda.day2t">Deep Sprints</p>
             <div class="slot"><span class="time">09:00</span><span class="desc" data-i18n="ag.standup">Team stand-up</span></div>
             <div class="slot hi"><span class="time">09:30</span><span class="desc">Sprint 2</span></div>
             <div class="slot brk"><span class="time">12:00</span><span class="desc" data-i18n="ag.lunch">Lunch</span></div>
-            <div class="slot"><span class="time">13:00</span><span class="desc" data-i18n="ag.scpanel">Rubin SC pathways panel</span></div>
-            <div class="slot hi"><span class="time">14:00</span><span class="desc">Sprint 3</span></div>
+            <div class="slot hi"><span class="time">13:30</span><span class="desc">Sprint 3</span></div>
             <div class="slot brk"><span class="time">15:15</span><span class="desc" data-i18n="ag.coffee">Coffee break</span></div>
             <div class="slot"><span class="time">15:45</span><span class="desc" data-i18n="ag.sprint3cont">Sprint 3 continues</span></div>
             <div class="slot"><span class="time">17:00</span><span class="desc" data-i18n="ag.updates">Team updates</span></div>
@@ -540,8 +555,7 @@
             <div class="slot"><span class="time">09:00</span><span class="desc" data-i18n="ag.standup">Team stand-up</span></div>
             <div class="slot hi"><span class="time">09:30</span><span class="desc">Sprint 4</span></div>
             <div class="slot brk"><span class="time">12:00</span><span class="desc" data-i18n="ag.lunch">Lunch</span></div>
-            <div class="slot"><span class="time">13:00</span><span class="desc" data-i18n="ag.pubworkshop">Publication pathway workshop</span></div>
-            <div class="slot"><span class="time">14:00</span><span class="desc" data-i18n="ag.sprint4cont">Sprint 4 continues</span></div>
+            <div class="slot"><span class="time">13:30</span><span class="desc" data-i18n="ag.sprint4cont">Sprint 4 continues</span></div>
             <div class="slot brk"><span class="time">15:00</span><span class="desc" data-i18n="ag.coffee">Coffee break</span></div>
             <div class="slot hi"><span class="time">15:30</span><span class="desc" data-i18n="ag.showtell">Show-and-tell</span></div>
             <div class="slot"><span class="time">16:45</span><span class="desc" data-i18n="ag.commit">Commitments + closing survey</span></div>
@@ -989,6 +1003,8 @@
         "mentors.h2": "Mentores y proyectos",
         "mentors.lead": "Los mentores de Rubin lideran equipos preformados en torno a los proyectos que se listan abajo. Cada equipo combina una pregunta científica propuesta por su mentor con trabajo práctico sobre datos de alertas de Rubin y herramientas de LINCC Frameworks. Mentores confirmados, en orden alfabético por apellido:",
         "mentors.role": "Mentor(a)",
+        "mentors.cowith": "Con la comentoría de",
+        "mentors.repo": "Repositorio del equipo:", "mentors.repos": "Repositorios del equipo:",
         "mentors.pbern": "Explorando los descubrimientos del Sistema Solar de Rubin en el Minor Planet Center.",
         "mentors.pcuevas1": "Mapeando el Universo cercano: determinación de distancias con estrellas variables en el flujo de alertas de Rubin.",
         "mentors.pcuevas2": "Descubriendo lo inesperado: detección de anomalías en los flujos de alertas de Rubin.",
@@ -1093,9 +1109,9 @@
         "res.gloss.mpc.t": "Minor Planet Center (MPC)",
         "res.gloss.mpc.d": "El centro internacional de referencia para observaciones y órbitas de cuerpos menores del Sistema Solar, al que se reportan los descubrimientos de Rubin.",
         "agenda.h2": "Agenda preliminar",
-        "agenda.lead": "Tres días completos en Medellín — contexto y sprints el Día 1, sprints intensivos y rutas hacia las Colaboraciones Científicas el Día 2, y un taller sobre la ruta hacia la publicación con presentación final el Día 3.",
+        "agenda.lead": "Tres días completos en Medellín — contexto y un primer sprint el Día 1, sprints intensivos el Día 2, y un último sprint con la presentación de resultados el Día 3.",
         "agenda.day1h": "Día 1 — 13 oct.", "agenda.day1t": "Contexto + Sprint 1",
-        "agenda.day2h": "Día 2 — 14 oct.", "agenda.day2t": "Sprints + rutas a las SC",
+        "agenda.day2h": "Día 2 — 14 oct.", "agenda.day2t": "Sprints intensivos",
         "agenda.day3h": "Día 3 — 15 oct.", "agenda.day3t": "Sprint + presentación final",
         "ag.reg": "Registro + café", "ag.open": "Apertura, presentaciones, código de conducta",
         "ag.rubinov": `1. Introducción a Rubin (<a href="https://docs.google.com/presentation/d/1fvuRkCaBeI_8Wkg_AvFBuFh-FZUEOyyN79V0NuPlWPA/edit?slide=id.g3f23d7cdc8f_0_263#slide=id.g3f23d7cdc8f_0_263" target="_blank" rel="noopener">diapositivas ↗</a>) &nbsp;2. Panorama de Prompt Products y alertas`, "ag.coffee": "Pausa para café",
@@ -1103,9 +1119,9 @@
         "ag.lightning": "Charlas relámpago de participantes",
         "ag.lunch": "Almuerzo", "ag.updates_retro": "Actualizaciones de equipos + retrospectiva",
         "ag.reception": "Recepción de bienvenida", "ag.standup": "Reunión rápida de equipos",
-        "ag.scpanel": "Panel: rutas hacia las Colaboraciones Científicas de Rubin", "ag.sprint3cont": "Continúa el Sprint 3",
+        "ag.sprint3cont": "Continúa el Sprint 3",
         "ag.updates": "Actualizaciones de equipos", "ag.dinner": "Cena grupal",
-        "ag.pubworkshop": "Taller sobre la ruta hacia la publicación", "ag.sprint4cont": "Continúa el Sprint 4",
+        "ag.sprint4cont": "Continúa el Sprint 4",
         "ag.showtell": "Presentación final", "ag.commit": "Compromisos + encuesta de cierre", "ag.wrap": "Cierre",
         "agenda.note": "Programa preliminar — sujeto a cambios.",
         "local.h2": "Información local",
@@ -1207,6 +1223,8 @@
         "mentors.h2": "Mentores e projetos",
         "mentors.lead": "Os mentores do Rubin lideram equipes pré-formadas em torno dos projetos listados abaixo. Cada equipe combina uma pergunta científica proposta por seu mentor com trabalho prático sobre dados de alertas do Rubin e ferramentas do LINCC Frameworks. Mentores confirmados, em ordem alfabética por sobrenome:",
         "mentors.role": "Mentor(a)",
+        "mentors.cowith": "Com a comentoria de",
+        "mentors.repo": "Repositório da equipe:", "mentors.repos": "Repositórios da equipe:",
         "mentors.pbern": "Explorando as descobertas do Sistema Solar do Rubin no Minor Planet Center.",
         "mentors.pcuevas1": "Mapeando o Universo próximo: determinação de distâncias com estrelas variáveis no fluxo de alertas do Rubin.",
         "mentors.pcuevas2": "Descobrindo o inesperado: detecção de anomalias nos fluxos de alertas do Rubin.",
@@ -1311,9 +1329,9 @@
         "res.gloss.mpc.t": "Minor Planet Center (MPC)",
         "res.gloss.mpc.d": "O centro internacional de referência para observações e órbitas de corpos menores do Sistema Solar, ao qual as descobertas do Rubin são reportadas.",
         "agenda.h2": "Agenda preliminar",
-        "agenda.lead": "Três dias completos em Medellín — contexto e sprints no Dia 1, sprints intensivos e caminhos para as Colaborações Científicas no Dia 2, e uma oficina sobre o caminho até a publicação com apresentação final no Dia 3.",
+        "agenda.lead": "Três dias completos em Medellín — contexto e um primeiro sprint no Dia 1, sprints intensivos no Dia 2, e um último sprint com a apresentação dos resultados no Dia 3.",
         "agenda.day1h": "Dia 1 — 13 out.", "agenda.day1t": "Contexto + Sprint 1",
-        "agenda.day2h": "Dia 2 — 14 out.", "agenda.day2t": "Sprints + caminhos às SC",
+        "agenda.day2h": "Dia 2 — 14 out.", "agenda.day2t": "Sprints intensivos",
         "agenda.day3h": "Dia 3 — 15 out.", "agenda.day3t": "Sprint + apresentação final",
         "ag.reg": "Credenciamento + café", "ag.open": "Abertura, apresentações, código de conduta",
         "ag.rubinov": `1. Introdução ao Rubin (<a href="https://docs.google.com/presentation/d/1fvuRkCaBeI_8Wkg_AvFBuFh-FZUEOyyN79V0NuPlWPA/edit?slide=id.g3f23d7cdc8f_0_263#slide=id.g3f23d7cdc8f_0_263" target="_blank" rel="noopener">slides ↗</a>) &nbsp;2. Panorama dos Prompt Products e dos alertas`, "ag.coffee": "Intervalo para café",
@@ -1321,9 +1339,9 @@
         "ag.lightning": "Palestras relâmpago dos participantes",
         "ag.lunch": "Almoço", "ag.updates_retro": "Atualizações das equipes + retrospectiva",
         "ag.reception": "Recepção de boas-vindas", "ag.standup": "Reunião rápida das equipes",
-        "ag.scpanel": "Painel: caminhos para as Colaborações Científicas do Rubin", "ag.sprint3cont": "Sprint 3 continua",
+        "ag.sprint3cont": "Sprint 3 continua",
         "ag.updates": "Atualizações das equipes", "ag.dinner": "Jantar em grupo",
-        "ag.pubworkshop": "Oficina sobre o caminho até a publicação", "ag.sprint4cont": "Sprint 4 continua",
+        "ag.sprint4cont": "Sprint 4 continua",
         "ag.showtell": "Apresentação final", "ag.commit": "Compromissos + pesquisa de encerramento", "ag.wrap": "Encerramento",
         "agenda.note": "Programação preliminar — sujeita a alterações.",
         "local.h2": "Informações locais",
