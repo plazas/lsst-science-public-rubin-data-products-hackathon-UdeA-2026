@@ -232,23 +232,26 @@
     .team li .aff { display: block; color: var(--faint); font-size: 0.76rem; }
 
     /* ---- Local info: collapsible practical details ---- */
-    .local-details {
+    .local-details, .policy-details {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 0 32px; margin-top: 26px;
     }
-    .local-details details {
+    .policy-details { grid-template-columns: 1fr; margin-top: 4px; max-width: 58em; }
+    .policy-links { margin: 0 0 4px; font-size: 0.93rem; }
+    .policy-links a { margin-right: 18px; }
+    .local-details details, .policy-details details {
       border-top: 1px solid var(--rule); padding: 0; break-inside: avoid;
     }
-    .local-details summary {
+    .local-details summary, .policy-details summary {
       cursor: pointer; padding: 10px 0; font-weight: 600; font-size: 0.95rem; list-style: none;
     }
-    .local-details summary::-webkit-details-marker { display: none; }
-    .local-details summary::before { content: "+ "; color: var(--accent); font-weight: 700; }
-    .local-details details[open] > summary::before { content: "\2212 "; }
-    .local-details .body { padding: 0 0 12px; font-size: 0.89rem; }
-    .local-details .body p { margin: 0 0 8px; }
-    .local-details .body ul { margin: 0 0 8px; padding-left: 1.2em; }
-    .local-details .body li { margin: 0 0 5px; }
+    .local-details summary::-webkit-details-marker, .policy-details summary::-webkit-details-marker { display: none; }
+    .local-details summary::before, .policy-details summary::before { content: "+ "; color: var(--accent); font-weight: 700; }
+    .local-details details[open] > summary::before, .policy-details details[open] > summary::before { content: "\2212 "; }
+    .local-details .body, .policy-details .body { padding: 0 0 12px; font-size: 0.89rem; }
+    .local-details .body p, .policy-details .body p { margin: 0 0 8px; }
+    .local-details .body ul, .policy-details .body ul { margin: 0 0 8px; padding-left: 1.2em; }
+    .local-details .body li, .policy-details .body li { margin: 0 0 5px; }
 
     /* ---- Participants ---- */
     .tbd {
@@ -673,6 +676,84 @@
           <div class="callout" data-i18n="res.sc.callout">💬 <strong>Before the workshop:</strong> we encourage you to join one of the no-data-rights collaborations above (AGN, TVS, SMWLV, or ISSC). Membership gives you access to the LSST-DA Slack, where we will coordinate teams and continue collaborating after the event.</div>
         </div>
 
+        <!-- Data policy -->
+        <div class="res-block">
+          <h3 data-i18n="res.pol.h">Rubin Data Policy (RDO-013)</h3>
+          <p class="sub" data-i18n="res.pol.sub">RDO-013, the Rubin Observatory Data Policy, sets the rules for who may access LSST data, what may be shared, and how results may be published during commissioning and operations. The copy below is version 1.2.5, revised 5 November 2025; the DocuShare link always points at the current version.</p>
+          <p class="policy-links">
+            <a href="docs/rdo-013-v1.2.5.pdf" target="_blank" rel="noopener"><span data-i18n="res.pol.pdf">PDF, version 1.2.5</span> ↗</a>
+            <a href="http://ls.st/rdo-013" target="_blank" rel="noopener"><span data-i18n="res.pol.live">Current version on DocuShare</span> ↗</a>
+          </p>
+          <div class="policy-details">
+          <details>
+            <summary data-i18n="res.pol.rights.h">Who has data rights</summary>
+            <div class="body" data-i18n="res.pol.rights.b"><ul>
+                <li><b>United States.</b> All US scientists: anyone employed by, funded at, or enrolled at a US educational or research institution carrying out non-profit research, or developing EPO (Education and Public Outreach) citizen-science projects.</li>
+                <li><b>Chile.</b> Scientists with access to Chilean telescope time as defined by SOCHIAS (Sociedad Chilena de Astronomía), together with their associates and students.</li>
+                <li><b>International.</b> Rights come through Data Rights Agreements (DRAs) with the DOE, SLAC or AURA, in exchange for in-kind contributions. A DRA names individual Principal Investigators, each typically with up to four junior associates. Only the NSF and the DOE can confer data rights.</li>
+                <li><b>Builders.</b> LSST Builders and Science Community Builders, each requiring two FTE-years of contribution, hold rights regardless of location, and that status does not expire.</li>
+                <li><b>Petition.</b> Amateur astronomers and citizen-science leaders may petition the Data Policy Committee.</li>
+              </ul>
+              <p>Users can never grant rights to other people by sharing data.</p></div>
+          </details>
+          <details>
+            <summary data-i18n="res.pol.grace.h">Grace period</summary>
+            <div class="body" data-i18n="res.pol.grace.b"><p>Junior users — students, postdocs and junior faculty — who leave a US or Chilean institution keep their rights for two years. During that time they may access only the data that existed when they left, and they must relocate to an eligible institution. International grace periods are set in each Data Rights Agreement.</p></div>
+          </details>
+          <details>
+            <summary data-i18n="res.pol.publicprop.h">What is public and what is proprietary</summary>
+            <div class="body" data-i18n="res.pol.publicprop.b"><p>The core rule is a <b>two-year proprietary period after each Data Release</b>, after which the data become public.</p>
+              <p><b>Public immediately:</b></p>
+              <ul>
+                <li>The alert stream, including cutouts</li>
+                <li>The contents of the alert archive</li>
+                <li>Prompt catalog products in the PPDB (Prompt Products Database)</li>
+                <li>Data reported to the Minor Planet Center</li>
+                <li>The software stack</li>
+                <li>Survey simulations and MAF (Metrics Analysis Framework) outputs</li>
+                <li>EPO data</li>
+                <li>A subset of site metadata, such as weather, seeing and observing patterns</li>
+              </ul>
+              <p><b>Proprietary:</b></p>
+              <ul>
+                <li>Raw and calibration data</li>
+                <li>Prompt image products, which stay proprietary until two years after inclusion in a Data Release — up to about three years in total</li>
+                <li>Data Release images and catalogs, including photometric redshifts</li>
+                <li>Most EFD (Engineering and Facility Database) metadata</li>
+                <li>Commissioning data, which follows operations rules</li>
+              </ul>
+              <p>A clause added in this version, <b>DPOL-520</b>, states that Butler registry metadata — the existence of a dataset and its dimension records — is not proprietary. An IDAC (Independent Data Access Center) may therefore list Data Release products in public ObsTAP or SIA services, as long as the data themselves stay restricted.</p>
+              <p>Note that <b>public does not mean Rubin will serve the data to everyone</b>: access to the DAC (Data Access Center) and the RSP (Rubin Science Platform) stays limited to authenticated LSST users, even for public products.</p></div>
+          </details>
+          <details>
+            <summary data-i18n="res.pol.derived.h">Derived data products and target lists</summary>
+            <div class="body" data-i18n="res.pol.derived.b"><p>A <b>derived data product</b> is anything made from proprietary data that cannot be used to recreate a proprietary product, including an equivalent reconstruction of one. Colour–magnitude diagrams, mass maps, physical properties and classifications are examples. These may be shared with anyone.</p>
+              <p>Users may also share <b>target lists of up to 1,000 objects</b> — right ascension, declination and ugrizy magnitudes — with non-users, for specific proposals or publications. Larger lists, for example for multi-object spectroscopy, need approval from the Data Policy Committee. Large survey-to-survey data-sharing arrangements go through the committee and additionally need approval from the Operations Director, the Management Board and the agencies.</p></div>
+          </details>
+          <details>
+            <summary data-i18n="res.pol.pubs.h">Publications</summary>
+            <div class="body" data-i18n="res.pol.pubs.b"><p>There is <b>no reserved science</b>: no Science Collaboration owns a research area. Rubin requires no publication-board approval, although individual collaborations may have their own. Non-users may be co-authors without accessing the data.</p>
+              <p>Reproducibility should come from citing queries, not from posting proprietary data. Papers should include an acknowledgment of data-policy compliance and of NSF/DOE funding. Nobody may publish on unreleased data, and members of the commissioning team cannot submit papers until the data are released to users.</p></div>
+          </details>
+          <details>
+            <summary data-i18n="res.pol.cases.h">Worked examples (Section 8)</summary>
+            <div class="body" data-i18n="res.pol.cases.b"><ul>
+                <li>Sharing a comet&rsquo;s ephemerides is allowed.</li>
+                <li>Stacks you build yourself from Prompt images are proprietary, because they are equivalent to Data Release stacks.</li>
+                <li>Star catalogs of a newly discovered galaxy are proprietary, but plots and derived galaxy properties are not.</li>
+                <li>Broker classifications are shareable.</li>
+                <li>Brokers may republish the full alert database.</li>
+                <li>A user may contribute precursor photometry to a non-user&rsquo;s paper as a derived product, and be a co-author.</li>
+              </ul></div>
+          </details>
+          <details>
+            <summary data-i18n="res.pol.enforce.h">Enforcement and committees</summary>
+            <div class="body" data-i18n="res.pol.enforce.b"><p>Rubin does not actively monitor users: each user is personally responsible, and suspected violations go to the Data Policy Committee. Sanctions range from losing access for at least one data release to having rights revoked entirely. A program in good standing may request a replacement for a revoked international Principal Investigator or junior associate.</p>
+              <p>The <b>Data Policy Committee</b> interprets the policy, arbitrates disputes and evolves it. The <b>Resource Allocation Committee</b> works like a time allocation committee, but for compute, storage and bulk downloads beyond the default quotas.</p></div>
+          </details>
+          </div>
+        </div>
+
         <!-- Glossary -->
         <div class="res-block">
           <h3 data-i18n="res.gloss.h">Glossary of key terms</h3>
@@ -1068,6 +1149,62 @@
         "res.sc.callout": `💬 <strong>Antes del taller:</strong> te animamos a unirte a una de las colaboraciones sin derechos de datos de arriba (AGN, TVS, SMWLV o ISSC). La membresía te da acceso al Slack de LSST-DA, donde coordinaremos los equipos y seguiremos colaborando después del evento.`,
         "res.gloss.h": "Glosario de términos clave",
         "res.gloss.sub": `Una referencia rápida de términos que escucharás durante el taller. Para la lista completa y oficial, consulta el <a href="https://www.lsst.org/scientists/glossary-acronyms" target="_blank" rel="noopener">Glosario y Acrónimos ↗</a> de Rubin/LSST (con búsqueda, en inglés y español) y el <a href="https://rubinobservatory.org/education/glossary" target="_blank" rel="noopener">glosario educativo ↗</a> más sencillo.`,
+        "res.pol.h": `Política de Datos de Rubin (RDO-013)`,
+        "res.pol.sub": `RDO-013, la Política de Datos del Observatorio Rubin, fija las reglas sobre quién puede acceder a los datos del LSST, qué se puede compartir y cómo se pueden publicar los resultados durante la puesta en marcha y las operaciones. La copia que se enlaza abajo es la versión 1.2.5, revisada el 5 de noviembre de 2025; el enlace a DocuShare siempre apunta a la versión vigente.`,
+        "res.pol.pdf": `PDF, versión 1.2.5`,
+        "res.pol.live": `Versión vigente en DocuShare`,
+        "res.pol.rights.h": `Quién tiene derechos sobre los datos`,
+        "res.pol.rights.b": `<ul>
+                <li><b>Estados Unidos.</b> Todos los científicos de EE. UU.: quienes estén empleados, financiados o matriculados en una institución educativa o de investigación estadounidense que realice investigación sin fines de lucro, o que desarrollen proyectos de ciencia ciudadana de EPO (Education and Public Outreach, educación y divulgación).</li>
+                <li><b>Chile.</b> Científicos con acceso a tiempo de telescopio chileno según la definición de SOCHIAS (Sociedad Chilena de Astronomía), junto con sus asociados y estudiantes.</li>
+                <li><b>Internacional.</b> Los derechos se obtienen mediante Acuerdos de Derechos sobre los Datos (DRA, Data Rights Agreements) con el DOE, SLAC o AURA, a cambio de contribuciones en especie. Un DRA nombra investigadores principales individuales, cada uno normalmente con hasta cuatro asociados junior. Solo la NSF y el DOE pueden otorgar derechos sobre los datos.</li>
+                <li><b>Builders.</b> Los LSST Builders y Science Community Builders, que requieren dos años-FTE de contribución cada uno, tienen derechos sin importar su ubicación, y esa condición no caduca.</li>
+                <li><b>Petición.</b> Los astrónomos aficionados y quienes lideran proyectos de ciencia ciudadana pueden presentar una petición al Comité de Política de Datos.</li>
+              </ul>
+              <p>Las personas usuarias nunca pueden otorgar derechos a otras compartiendo datos.</p>`,
+        "res.pol.grace.h": `Período de gracia`,
+        "res.pol.grace.b": `<p>Las personas usuarias junior — estudiantes, posdoctorados y profesorado junior — que dejan una institución estadounidense o chilena conservan sus derechos durante dos años. En ese plazo solo pueden acceder a los datos que existían cuando se fueron, y deben trasladarse a una institución elegible. Los períodos de gracia internacionales se fijan en cada Acuerdo de Derechos sobre los Datos.</p>`,
+        "res.pol.publicprop.h": `Qué es público y qué es propietario`,
+        "res.pol.publicprop.b": `<p>La regla central es un <b>período propietario de dos años después de cada Data Release</b>, tras el cual los datos se hacen públicos.</p>
+              <p><b>Público de inmediato:</b></p>
+              <ul>
+                <li>El flujo de alertas, incluidos los recortes de imagen</li>
+                <li>El contenido del archivo de alertas</li>
+                <li>Los productos de catálogo inmediatos en la PPDB (Prompt Products Database, base de datos de productos inmediatos)</li>
+                <li>Los datos reportados al Minor Planet Center</li>
+                <li>El stack de software</li>
+                <li>Las simulaciones del sondeo y las salidas de MAF (Metrics Analysis Framework)</li>
+                <li>Los datos de EPO</li>
+                <li>Un subconjunto de metadatos del sitio, como clima, seeing y patrones de observación</li>
+              </ul>
+              <p><b>Propietario:</b></p>
+              <ul>
+                <li>Datos crudos y de calibración</li>
+                <li>Los productos de imagen inmediatos, que siguen siendo propietarios hasta dos años después de su inclusión en un Data Release — hasta unos tres años en total</li>
+                <li>Las imágenes y catálogos de Data Release, incluidos los corrimientos al rojo fotométricos</li>
+                <li>La mayoría de los metadatos de la EFD (Engineering and Facility Database)</li>
+                <li>Los datos de puesta en marcha (commissioning), que siguen las reglas de operaciones</li>
+              </ul>
+              <p>Una cláusula añadida en esta versión, <b>DPOL-520</b>, establece que los metadatos del registro de Butler — la existencia de un conjunto de datos y sus registros de dimensiones — no son propietarios. Un IDAC (Independent Data Access Center, centro independiente de acceso a datos) puede por tanto listar productos de Data Release en servicios públicos ObsTAP o SIA, siempre que los datos en sí sigan restringidos.</p>
+              <p>Conviene notar que <b>público no significa que Rubin vaya a entregar los datos a todo el mundo</b>: el acceso al DAC (Data Access Center) y a la RSP (Rubin Science Platform) sigue limitado a usuarios de LSST autenticados, incluso para productos públicos.</p>`,
+        "res.pol.derived.h": `Productos de datos derivados y listas de objetivos`,
+        "res.pol.derived.b": `<p>Un <b>producto de datos derivado</b> es cualquier cosa construida a partir de datos propietarios que no permita recrear un producto propietario, incluida una reconstrucción equivalente de uno. Los diagramas color–magnitud, los mapas de masa, las propiedades físicas y las clasificaciones son ejemplos. Estos productos se pueden compartir con cualquier persona.</p>
+              <p>Las personas usuarias también pueden compartir <b>listas de objetivos de hasta 1000 objetos</b> — ascensión recta, declinación y magnitudes ugrizy — con quienes no son usuarios, para propuestas o publicaciones específicas. Las listas más grandes, por ejemplo para espectroscopía multiobjeto, requieren aprobación del Comité de Política de Datos. Los acuerdos grandes de intercambio de datos entre sondeos pasan por el comité y además requieren la aprobación del Director de Operaciones, la Junta de Gestión y las agencias.</p>`,
+        "res.pol.pubs.h": `Publicaciones`,
+        "res.pol.pubs.b": `<p><b>No hay ciencia reservada</b>: ninguna Colaboración Científica es dueña de un área de investigación. Rubin no exige la aprobación de un comité de publicaciones, aunque cada colaboración puede tener el suyo. Quienes no son usuarios pueden ser coautores sin acceder a los datos.</p>
+              <p>La reproducibilidad debe lograrse citando las consultas (queries), no publicando datos propietarios. Los artículos deben incluir un reconocimiento del cumplimiento de la política de datos y del financiamiento de la NSF y el DOE. Nadie puede publicar sobre datos no liberados, y los miembros del equipo de puesta en marcha no pueden enviar artículos hasta que los datos se liberen a las personas usuarias.</p>`,
+        "res.pol.cases.h": `Casos de uso (Sección 8)`,
+        "res.pol.cases.b": `<ul>
+                <li>Compartir las efemérides de un cometa está permitido.</li>
+                <li>Los apilamientos (stacks) que uno mismo construye a partir de imágenes inmediatas son propietarios, porque equivalen a los apilamientos de Data Release.</li>
+                <li>Los catálogos de estrellas de una galaxia recién descubierta son propietarios, pero las gráficas y las propiedades derivadas de la galaxia no lo son.</li>
+                <li>Las clasificaciones de los brokers se pueden compartir.</li>
+                <li>Los brokers pueden volver a publicar la base de datos completa de alertas.</li>
+                <li>Una persona usuaria puede aportar fotometría precursora al artículo de alguien que no es usuario, como producto derivado, y ser coautora.</li>
+              </ul>`,
+        "res.pol.enforce.h": `Cumplimiento y comités`,
+        "res.pol.enforce.b": `<p>Rubin no monitorea activamente a las personas usuarias: cada una es responsable personalmente, y las presuntas infracciones se remiten al Comité de Política de Datos. Las sanciones van desde perder el acceso durante al menos un data release hasta la revocación total de los derechos. Un programa en regla puede solicitar el reemplazo de un investigador principal o asociado junior internacional cuyos derechos hayan sido revocados.</p>
+              <p>El <b>Comité de Política de Datos</b> interpreta la política, arbitra disputas y la hace evolucionar. El <b>Comité de Asignación de Recursos</b> funciona como un comité de asignación de tiempo, pero para cómputo, almacenamiento y descargas masivas más allá de las cuotas por defecto.</p>`,
         "res.gloss.rubin.t": `Observatorio Vera C. Rubin`,
         "res.gloss.rubin.d": `Un observatorio nuevo en Cerro Pachón, Chile, financiado por la National Science Foundation (NSF, Fundación Nacional de Ciencias) y el Department of Energy (DOE, Departamento de Energía) de Estados Unidos. Su telescopio Simonyi de 8,4 m lleva la Cámara LSST, de 3200 megapíxeles — la cámara digital más grande jamás construida para la astronomía — y fotografía todo el cielo austral cada pocas noches. <a href="https://rubinobservatory.org/" target="_blank" rel="noopener">rubinobservatory.org ↗</a>`,
         "res.gloss.lsst.t": `LSST — Legacy Survey of Space and Time (Sondeo del Legado del Espacio y el Tiempo)`,
@@ -1297,6 +1434,62 @@
         "res.sc.callout": `💬 <strong>Antes do workshop:</strong> recomendamos que você se junte a uma das colaborações sem direitos de dados acima (AGN, TVS, SMWLV ou ISSC). A associação dá acesso ao Slack da LSST-DA, onde coordenaremos as equipes e continuaremos colaborando após o evento.`,
         "res.gloss.h": "Glossário de termos-chave",
         "res.gloss.sub": `Uma referência rápida de termos que você ouvirá durante o workshop. Para a lista completa e oficial, consulte o <a href="https://www.lsst.org/scientists/glossary-acronyms" target="_blank" rel="noopener">Glossário e Acrônimos ↗</a> do Rubin/LSST (pesquisável, em inglês e espanhol) e o <a href="https://rubinobservatory.org/education/glossary" target="_blank" rel="noopener">glossário educativo ↗</a> mais simples.`,
+        "res.pol.h": `Política de Dados do Rubin (RDO-013)`,
+        "res.pol.sub": `O RDO-013, a Política de Dados do Observatório Rubin, define as regras sobre quem pode acessar os dados do LSST, o que pode ser compartilhado e como os resultados podem ser publicados durante o comissionamento e as operações. A cópia vinculada abaixo é a versão 1.2.5, revisada em 5 de novembro de 2025; o link do DocuShare sempre aponta para a versão vigente.`,
+        "res.pol.pdf": `PDF, versão 1.2.5`,
+        "res.pol.live": `Versão vigente no DocuShare`,
+        "res.pol.rights.h": `Quem tem direitos sobre os dados`,
+        "res.pol.rights.b": `<ul>
+                <li><b>Estados Unidos.</b> Todos os cientistas dos EUA: quem for empregado, financiado ou matriculado em uma instituição educacional ou de pesquisa norte-americana que faça pesquisa sem fins lucrativos, ou que desenvolva projetos de ciência cidadã de EPO (Education and Public Outreach, educação e divulgação).</li>
+                <li><b>Chile.</b> Cientistas com acesso a tempo de telescópio chileno conforme a definição da SOCHIAS (Sociedad Chilena de Astronomía), junto com seus associados e estudantes.</li>
+                <li><b>Internacional.</b> Os direitos vêm por meio de Acordos de Direitos sobre os Dados (DRA, Data Rights Agreements) com o DOE, o SLAC ou a AURA, em troca de contribuições em espécie. Um DRA nomeia pesquisadores principais individuais, cada um normalmente com até quatro associados juniores. Somente a NSF e o DOE podem conferir direitos sobre os dados.</li>
+                <li><b>Builders.</b> Os LSST Builders e Science Community Builders, que exigem dois anos-FTE de contribuição cada, têm direitos independentemente da localização, e essa condição não expira.</li>
+                <li><b>Petição.</b> Astrônomos amadores e líderes de projetos de ciência cidadã podem peticionar ao Comitê de Política de Dados.</li>
+              </ul>
+              <p>As pessoas usuárias nunca podem conceder direitos a outras compartilhando dados.</p>`,
+        "res.pol.grace.h": `Período de carência`,
+        "res.pol.grace.b": `<p>Usuários juniores — estudantes, pós-doutorandos e docentes juniores — que deixam uma instituição dos EUA ou do Chile mantêm seus direitos por dois anos. Nesse prazo só podem acessar os dados que existiam quando saíram, e precisam se transferir para uma instituição elegível. Os períodos de carência internacionais são definidos em cada Acordo de Direitos sobre os Dados.</p>`,
+        "res.pol.publicprop.h": `O que é público e o que é proprietário`,
+        "res.pol.publicprop.b": `<p>A regra central é um <b>período proprietário de dois anos após cada Data Release</b>, depois do qual os dados se tornam públicos.</p>
+              <p><b>Público imediatamente:</b></p>
+              <ul>
+                <li>O fluxo de alertas, incluindo os recortes de imagem</li>
+                <li>O conteúdo do arquivo de alertas</li>
+                <li>Os produtos de catálogo imediatos na PPDB (Prompt Products Database, banco de dados de produtos imediatos)</li>
+                <li>Os dados reportados ao Minor Planet Center</li>
+                <li>O stack de software</li>
+                <li>As simulações do levantamento e as saídas do MAF (Metrics Analysis Framework)</li>
+                <li>Os dados de EPO</li>
+                <li>Um subconjunto de metadados do sítio, como clima, seeing e padrões de observação</li>
+              </ul>
+              <p><b>Proprietário:</b></p>
+              <ul>
+                <li>Dados brutos e de calibração</li>
+                <li>Os produtos de imagem imediatos, que permanecem proprietários até dois anos após a inclusão em um Data Release — até cerca de três anos no total</li>
+                <li>As imagens e catálogos de Data Release, incluindo os desvios para o vermelho fotométricos</li>
+                <li>A maior parte dos metadados da EFD (Engineering and Facility Database)</li>
+                <li>Os dados de comissionamento, que seguem as regras de operações</li>
+              </ul>
+              <p>Uma cláusula acrescentada nesta versão, <b>DPOL-520</b>, estabelece que os metadados do registro do Butler — a existência de um conjunto de dados e seus registros de dimensões — não são proprietários. Um IDAC (Independent Data Access Center, centro independente de acesso a dados) pode, portanto, listar produtos de Data Release em serviços públicos ObsTAP ou SIA, desde que os dados em si permaneçam restritos.</p>
+              <p>Vale notar que <b>público não significa que o Rubin vá entregar os dados a todos</b>: o acesso ao DAC (Data Access Center) e à RSP (Rubin Science Platform) permanece limitado a usuários do LSST autenticados, mesmo para produtos públicos.</p>`,
+        "res.pol.derived.h": `Produtos de dados derivados e listas de alvos`,
+        "res.pol.derived.b": `<p>Um <b>produto de dados derivado</b> é qualquer coisa construída a partir de dados proprietários que não permita recriar um produto proprietário, incluindo uma reconstrução equivalente dele. Diagramas cor–magnitude, mapas de massa, propriedades físicas e classificações são exemplos. Esses produtos podem ser compartilhados com qualquer pessoa.</p>
+              <p>As pessoas usuárias também podem compartilhar <b>listas de alvos de até 1000 objetos</b> — ascensão reta, declinação e magnitudes ugrizy — com não usuários, para propostas ou publicações específicas. Listas maiores, por exemplo para espectroscopia multiobjeto, precisam de aprovação do Comitê de Política de Dados. Grandes acordos de compartilhamento de dados entre levantamentos passam pelo comitê e ainda precisam da aprovação do Diretor de Operações, do Conselho de Gestão e das agências.</p>`,
+        "res.pol.pubs.h": `Publicações`,
+        "res.pol.pubs.b": `<p><b>Não há ciência reservada</b>: nenhuma Colaboração Científica é dona de uma área de pesquisa. O Rubin não exige aprovação de um comitê de publicações, embora cada colaboração possa ter o seu. Quem não é usuário pode ser coautor sem acessar os dados.</p>
+              <p>A reprodutibilidade deve vir da citação das consultas (queries), e não da publicação de dados proprietários. Os artigos devem incluir um reconhecimento do cumprimento da política de dados e do financiamento da NSF e do DOE. Ninguém pode publicar sobre dados não liberados, e os membros da equipe de comissionamento não podem submeter artigos até que os dados sejam liberados aos usuários.</p>`,
+        "res.pol.cases.h": `Casos de uso (Seção 8)`,
+        "res.pol.cases.b": `<ul>
+                <li>Compartilhar as efemérides de um cometa é permitido.</li>
+                <li>Os empilhamentos (stacks) que você mesmo constrói a partir de imagens imediatas são proprietários, porque equivalem aos empilhamentos de Data Release.</li>
+                <li>Os catálogos de estrelas de uma galáxia recém-descoberta são proprietários, mas os gráficos e as propriedades derivadas da galáxia não são.</li>
+                <li>As classificações dos brokers podem ser compartilhadas.</li>
+                <li>Os brokers podem republicar o banco de dados completo de alertas.</li>
+                <li>Uma pessoa usuária pode contribuir com fotometria precursora para o artigo de alguém que não é usuário, como produto derivado, e ser coautora.</li>
+              </ul>`,
+        "res.pol.enforce.h": `Cumprimento e comitês`,
+        "res.pol.enforce.b": `<p>O Rubin não monitora ativamente as pessoas usuárias: cada uma é pessoalmente responsável, e as suspeitas de violação vão ao Comitê de Política de Dados. As sanções vão desde perder o acesso por pelo menos um data release até a revogação total dos direitos. Um programa em situação regular pode solicitar a substituição de um pesquisador principal ou associado júnior internacional cujos direitos tenham sido revogados.</p>
+              <p>O <b>Comitê de Política de Dados</b> interpreta a política, arbitra disputas e a faz evoluir. O <b>Comitê de Alocação de Recursos</b> funciona como um comitê de alocação de tempo, mas para computação, armazenamento e downloads em massa além das cotas padrão.</p>`,
         "res.gloss.rubin.t": `Observatório Vera C. Rubin`,
         "res.gloss.rubin.d": `Um novo observatório no Cerro Pachón, no Chile, financiado pela National Science Foundation (NSF, Fundação Nacional de Ciências) e pelo Department of Energy (DOE, Departamento de Energia) dos Estados Unidos. Seu telescópio Simonyi de 8,4 m carrega a Câmera LSST, de 3200 megapixels — a maior câmera digital já construída para a astronomia — e fotografa todo o céu austral a cada poucas noites. <a href="https://rubinobservatory.org/" target="_blank" rel="noopener">rubinobservatory.org ↗</a>`,
         "res.gloss.lsst.t": `LSST — Legacy Survey of Space and Time (Levantamento do Legado do Espaço e do Tempo)`,
